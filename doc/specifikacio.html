@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" lang="hu_HU" />
+        <title>NHF Specifikáció - NO047V Stork Gábor</title>
+        <link href="style.css" type="text/css" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width">        
+    </head>
+    <body>
+        <h1 class="cim">Prog 1 NHF specifikáció - NO047V Stork Gábor</h1>
+        <!--
+        <div id="nav">
+             <h3>Navigáció</h3>
+             <ul>
+                 <li>
+                     <a href="#rovidleiras">Rövid leírás</a>
+                 </li>
+                 <li>
+                     <a href="#celplatform">Célplatform</a>
+                 </li>
+                 <li>
+                     <a href="#bemenetek">Bemenetek</a>
+                     <ul>
+                        <li><a href="#eredmenyfajlok">Eredményfájlok</a>
+                             <ul>
+                                <li><a href="#txt">txt</a></li>
+                                <li><a href="#IOF">IOF 3.0 xml</a></li>
+                                <li><a href="#OE2010CSV">OE2010 CSV</a></li>
+                             </ul>
+                         </li>
+                        <li>
+                            <a href="#kategoriak">Kategóriák</a>
+                            <ul>
+                                <li><a href="#leftright">left.txt és right.txt</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#beallitasok">Beállítások</a>
+                            <ul>
+                                <li><a href="#settings.txt">settings.txt</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                 </li>
+                 <li>
+                     <a href="#kimenetek">Kimenetek</a>
+                     <ul>
+                         <li>Grafikus kijelzés
+                             <ul>
+                                <li>képernyőméret   </li>
+                                <li>betűtípus</li> 
+                             </ul>
+                         </li>
+                         <li>Log fájl</li>
+                     </ul>
+                 </li>
+                 <li>
+                     Használat
+                 </li>
+             </ul>
+        </div>
+    -->
+        <ul>
+                <li>
+                        <h2 class="alcim">
+                             Rövid leírás
+                        </h2>
+                        <!--<p>A program előre beállított módon (vagy alapértelmezetten egy NN.txt nevű fájlból) beolvas egy időmérés alapú verseny generált eredményfájlját, majd ezt jeleníti meg.</p>
+                        <p>A megjelenítés kategóriákra bontva történik, ahol szabadon meghatározható (left.txt, right.txt), hogy a program felületének vertikális közepétől jobbra vagy balra helyezkedjenek el. Ezeket az eredményeket mindkét oldalon "görgeti" lefelé a felületen.</p>
+                        <p>Az utolsó kategória után az első kategóriát jeleníti meg, mintha egy körkörös szalagot forgatna.</p>                        
+                        <p>Indítás előtt vagy akár futás közben is szabályozható a görgetés sebessége.</p>
+                        <p>A program alapértelmezetten teljes képernyőn fog elindulni.</p>-->
+                        <p>A program egy teljes képernyőn megjelenülő eredményjelző, ahol folyamatosan gördülnek lefelé az eredmények két oldalra és kategóriákra bontva. A kategóriákat left.txt és right.txt fájlokból olvassa be, ahol akár mindkét fájlban előfordulhat ugyanaz a kategória.</p>
+                        <p>Először a rajtlistát tölti be a program, majd megadott időközönként beolvas egy eredményfájlt, ami alapján felülírja az adott rajtidőt és helyezést ad mellé.</p>
+                        <p>Ha valaki már a rajtideje alapján versenyidőn kívül van, akkor eltűnik az eredményjelzőről, mint éppen kint futó egyén, de később ha mégis befut és szerepelni fog egy eredményfájlban visszakerül.</p>
+                        <p>Az utolsó kategória után az első kategóriát jeleníti meg, mintha egy körkörös szalagot forgatna.</p>                                                
+                        <p>Indítás előtt vagy akár futás közben is szabályozható a görgetés sebessége.</p>                        
+                    </li>
+                <li>
+                    <h2 class="alcim">Célplatform</h2>
+                    <p>
+                        Célzottan Windows 10 és Raspberry PI 3 (arm) debian alapú rendszerre tervezve, de a program csak szabvány C függvényeket és SDL2-t használ, így fordítható más ezek által támogatott rendszeren is.
+                    </p>
+                </li>
+            <li>
+                <h2 class="alcim">
+                     Bemenetek
+                </h2>
+                <ul>
+                    <li>
+                        <h3>Eredményfájlok / Rajtlistafájlok</h3>
+                        <p>
+                            A program
+                        </p>
+                        <ul>
+                            <li><h3>txt</h3>
+                                <p>Tabulátorokkal tagolva tartalmazza ezeket az információkat ebben a sorrendben:</p>
+                                <ul>
+                                    <li>Helyezés (egész szám)</li>
+                                    <li>Vezetéknév (karaktersorozat)</li>
+                                    <li>Keresztnév (karaktersorozat)</li>
+                                    <li>Egyesület (karaktersorozat)</li>
+                                    <li>Kategória (karaktersorozat)</li>
+                                    <li>Idő/Rajtidő (HHH:MM:SS)</li>
+                                </ul>
+                                <p>
+                                    Fontos, hogy a txt első sorában specifikálni kell, hogy milyen kódolású:
+                                </p>
+                            <ul>
+                                <li>UTF-8</li>
+                                <li>ASCII</li>
+                                <li>windows-1252</li>
+                                <li>UNICODE</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>IOF Interface Standard 3.0</h3>
+                            <p>Ezt nem részletezném, IOF szabvány.</p>
+                            <p>
+                                <a target="_blank" href="http://orienteering.org/resources/it/data-standard-3-0/">http://orienteering.org/resources/it/data-standard-3-0/</a>
+                            </p>
+                            <p>
+                                Az xml-nek csak az eredményekről vagy a rajtidőkről szóló részét értelmezi a program.
+                            </p>
+                        </li>
+                        <li>
+                            <h3>OE2010 CSV</h3>
+                            <p>
+                                Pontosvesszőkkel elválasztott szövegfájl. A program a 2. sortól (1. sor az oszlopok fejléce) olvassa be a sorokból az alábbi oszlopokat:
+                                <ul>
+                                    <li>6. oszlop > Vezetéknév</li>
+                                    <li>7. oszlop > Keresztnév</li>
+                                    <li>14. oszlop > Idő</li>
+                                    <li>20. oszlop > Egyesület</li>
+                                    <li>54. oszlop > Kategória</li>
+                                    <li>58. oszlop > Helyezés</li>
+                                </ul>
+                            </p>
+                        </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Kategóriák</h3>
+                        <ul>
+                            <li>
+                                <h3>left.txt és right.txt</h3>
+                                <p>A bal és jobboldalon megjelenő kategóriák nevei szerepelnek soronként. Egy kategória lehet mindkét oldalon is.</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <br><br><br>
+                    <li>
+                        <h3>Beállítások</h3>
+                        <ul>
+                            <li>
+                                <h3>settings.txt</h3>
+                                <p>A program futásának paraméterei szerepelnek benne soronként.</p>
+                                <p>név=érték formátumban pl.: filemode=txt, location=NN_2018.txt</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="alcim">
+                    Kimenetek
+                </h2>
+                <ul>
+                    <li>
+                        <h3>Grafikus kijelzés</h3>
+                        <p>Fehér hátteren két egyenlő nagyságú területre osztva gördülnek lefelé az eredménysorok</p>
+                        <p>Az eredmények felépítése táblázatszerű, az oszlopok sorra:</p>
+                        <ol style="list-style-type: lower-alpha;">
+                            <li>Helyezés</li>
+                            <li>Név (Vezetéknév Keresztnév)</li>
+                            <li>Egyesület</li>
+                            <li>Idő</li>
+                            <li>Időkülönbség az 1. helytől</li>
+                        </ol>
+                        <p>Az eredménysorok kategóriánként vannak szétválogatva, helyezés alapján növekvő sorrendben. Minden páros sor kiemelt színű, hogy követhető legyen.</p>
+                        <ul>
+                            <li>
+                                <h3>Képernyőméret</h3>
+                                <p>
+                                    Alapértelmezetten teljes képernyőn fog futni a program, de lesz lehetőség fix méretű ablakként is kezelni, illetve keret vagy keret nélkül.
+                                </p>
+                            </li>
+                            <li>
+                                <h3>Betűtípus</h3>
+                                <p>
+                                    Alapvetően <a target="_blank" href="https://fonts.google.com/specimen/Open+Sans">Open Sans Regular</a> lesz az elsődleges betűtípus.
+                                </p>
+                                <!--<p style="color:gray">
+                                    (Megjegyzés: Ennek a dokumentumnak is ez a betűtípusa csak nem lehet feltölteni TTF-el együtt) 
+                                </p>-->
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+       <p style="text-align: center;margin-bottom:100px;">
+            Specifikációt készítette: Stork Gábor
+       </p>
+    </body>
+</html>

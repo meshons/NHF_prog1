@@ -157,7 +157,7 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
     LOG_str(R_charset_ascii(charset));
     Result *r, *r_exist;
     int i;
-    char line[size];
+    char line[ 6 * (namesize + 1)];
     while (fgets(line, size, f) != NULL)
     {
         r = TXT_line(line, charset, listtype);

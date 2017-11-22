@@ -26,7 +26,6 @@ int main(int argc, char **argv)
     if (!LOG_init())
         return 1;
 
-
     Setting set;
     Settings_load(&set);
     loglevel = set.loglevel;
@@ -63,12 +62,12 @@ int main(int argc, char **argv)
     bool starter_en = false;
     bool resulter_en = false;
 
-    char * left_cats;
+    char *left_cats;
     int left_size;
-    char * right_cats;
+    char *right_cats;
     int right_size;
-    left_cats = R_load_cats("left.txt",&left_size);
-    right_cats = R_load_cats("right.txt",&right_size);
+    left_cats = R_load_cats("left.txt", &left_size);
+    right_cats = R_load_cats("right.txt", &right_size);
     LOG_str(left_cats);
 
     if (set.res_refreshrate != 0)
@@ -123,7 +122,7 @@ int main(int argc, char **argv)
 
     if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO) != 0)
         LOG_cstr(SDL_GetError());
-    window = SDL_CreateWindow("NHF", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_SHOWN );
+    window = SDL_CreateWindow("NHF", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_SHOWN);
     if (window == NULL)
         LOG_str("ablak");
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -134,7 +133,7 @@ int main(int argc, char **argv)
     SDL_DisableScreenSaver();
     SDL_ShowCursor(SDL_DISABLE);
 
-    TTF_Font *font = TTF_OpenFont("Open_Sans/OpenSans-Regular.ttf", width/74);
+    TTF_Font *font = TTF_OpenFont("Open_Sans/OpenSans-Regular.ttf", width / 74);
 
     loadGlyphs(ttf_normal, font, c_black, renderer);
 
@@ -147,8 +146,10 @@ int main(int argc, char **argv)
 
     clock_t timestart = clock();
     int i = 0;
-    float fi = height/2;
-    int left_k = 0,right_k = 0;
+    int j = 0;
+    float fi = height / 2;
+    float fr = height / 2;
+    int left_k = 0, right_k = 0;
 
     Uint32 elapsedTime = 0;
     Uint32 lastFrameTimeElapsed = 0;
@@ -157,24 +158,42 @@ int main(int argc, char **argv)
     while (!quit)
     {
         elapsedTime = SDL_GetTicks();
-        while( SDL_PollEvent( &event ) ){
-                
-                switch( event.type ){
-                    /*case SDL_KEYDOWN:
+        i = roundf(fi);
+        j = roundf(fr);
+        while (SDL_PollEvent(&event))
+        {
+
+            switch (event.type)
+            {
+            /*case SDL_KEYDOWN:
                     case SDL_KEYUP:
                         quit = 1;
                         break;*/
-
-                    case SDL_QUIT:
-                        quit = 1;
-                        break;
-
-                    default:
-                        break;
+            case SDL_KEYDOWN:
+                switch (event.key.keysym.sym)
+                {
+                case SDLK_LEFT:
+                    fi=0;
+                    break;
+                case SDLK_RIGHT:
+                    fi=100;
+                    break;
+                case SDLK_UP:
+                    fr=0;
+                    break;
+                case SDLK_DOWN:
+                    fr+=10;
+                    break;
                 }
+                break;
+            case SDL_QUIT:
+                quit = 1;
+                break;
 
+            default:
+                break;
             }
-
+        }
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
         SDL_RenderClear(renderer);
@@ -186,10 +205,9 @@ int main(int argc, char **argv)
         left_k = 0;
         right_k = 0;
 
-        Category * c = R_category_find(list,left_cats);
-        render_category(renderer, ttf_normal, 0, i,&left_k, width / 2 - 1, c);
-        render_category(renderer, ttf_normal, 961, i,&right_k, width / 2 - 1, c->next);
-
+        Category *c = R_category_find(list, left_cats);
+        render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, c);
+        render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, c->next);
 
         /*render_category(renderer, ttf_normal, 0, i,&left_k, width / 2 - 1, list);
         render_category(renderer, ttf_normal, 1081, i,&right_k, width / 2 - 1, list->next);
@@ -211,11 +229,13 @@ int main(int argc, char **argv)
         x_top++;
         x_bot++;
 
-
         deltaTime = (elapsedTime - lastFrameTimeElapsed) / 1000.0f;
         fi -= 90.0f * deltaTime;
-        if(fi<-height)fi=height;
-        //i = roundf(fi);
+        fr -= 60.0f * deltaTime;
+        if (fi < -height)
+            fi = height;
+        if (fr < -height)
+            fr = height;
         lastFrameTimeElapsed = elapsedTime;
 
         /*FrameStartTimeMs = FPS - (SDL_GetTicks() - FrameStartTimeMs);
@@ -235,10 +255,12 @@ int main(int argc, char **argv)
     SDL_DestroyWindow(window);
     SDL_Quit();
 
-    if(starter_en){
+    if (starter_en)
+    {
         pthread_cancel(start_thread);
     }
-    if(resulter_en){
+    if (resulter_en)
+    {
         pthread_cancel(result_thread);
     }
 

@@ -173,16 +173,16 @@ int main(int argc, char **argv)
                 switch (event.key.keysym.sym)
                 {
                 case SDLK_LEFT:
-                    fi=0;
+                    fi = 0;
                     break;
                 case SDLK_RIGHT:
-                    fi=100;
+                    fi = 100;
                     break;
                 case SDLK_UP:
-                    fr=0;
+                    fr = 0;
                     break;
                 case SDLK_DOWN:
-                    fr+=10;
+                    fr += 10;
                     break;
                 }
                 break;
@@ -204,10 +204,19 @@ int main(int argc, char **argv)
 
         left_k = 0;
         right_k = 0;
-
-        Category *c = R_category_find(list, left_cats);
-        render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, c);
-        render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, c->next);
+        int l_c;
+        for (l_c = 0; l_c < left_size; l_c++)
+        {
+            Category *cl = R_category_find(list, left_cats+namesize*l_c);
+            render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl);
+        }
+        int r_c;
+        for (r_c = 0; r_c < right_size; r_c++)
+        {
+            Category *cr = R_category_find(list, right_cats+namesize*r_c);
+            render_category(renderer, ttf_normal, width/2 + 1, j, &right_k, width / 2 - 1, cr);
+        }
+        //render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, c->next);
 
         /*render_category(renderer, ttf_normal, 0, i,&left_k, width / 2 - 1, list);
         render_category(renderer, ttf_normal, 1081, i,&right_k, width / 2 - 1, list->next);
@@ -230,8 +239,8 @@ int main(int argc, char **argv)
         x_bot++;
 
         deltaTime = (elapsedTime - lastFrameTimeElapsed) / 1000.0f;
-        fi -= 90.0f * deltaTime;
-        fr -= 60.0f * deltaTime;
+        fi -= 100.0f * deltaTime;
+        fr -= 100.0f * deltaTime;
         if (fi < -height)
             fi = height;
         if (fr < -height)

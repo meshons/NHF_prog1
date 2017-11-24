@@ -246,6 +246,7 @@ int main(int argc, char **argv)
         if (fr < -height)
             fr = height;
         lastFrameTimeElapsed = elapsedTime;
+        //valami
 
         /*FrameStartTimeMs = FPS - (SDL_GetTicks() - FrameStartTimeMs);
         if (FrameStartTimeMs > 0)

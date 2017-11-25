@@ -8,6 +8,7 @@
 int main(){
     FILE * fp;
     int i;
+    
     while(1){
         fp = fopen("result.txt","wt");
         if(fp==NULL) continue;

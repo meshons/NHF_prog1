@@ -31,6 +31,11 @@ typedef struct Result{
     atomic_int t;
     atomic_bool shown,poschanged;
     atomic_int starttime;
+
+    atomic_bool appaered, appaering;
+    atomic_bool deleted, deleting;
+    atomic_bool changing, changed;
+
     struct Result *next;
 }Result;
 

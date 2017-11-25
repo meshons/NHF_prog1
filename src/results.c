@@ -251,11 +251,7 @@ Result *R_result_search(Category *list, Result *rel, char level)
 }
 
 void R_result_sort(Category * list){
-    bool sorted = false;
-    
-    if(!sorted){
-
-    }
+    bool changed = false;
 }
 
 Result *R_new()

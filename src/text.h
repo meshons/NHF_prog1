@@ -16,7 +16,11 @@ typedef struct Glyph{
     SDL_Rect rect;
 }Glyph;
 typedef enum Align { LEFT, CENTER, RIGHT } Align;
-#endif
+
+typedef struct Action{
+
+    struct Action *next;
+}Action;
 
 unsigned short getGlyphId(unsigned short i);
 unsigned short getGlyphCH(unsigned short i);
@@ -28,3 +32,4 @@ void background(SDL_Renderer *renderer,int x, int y, int w, int h, SDL_Color * c
 
 void render_result(SDL_Renderer *renderer,Glyph * g,int x,int y,int w, int h, SDL_Color * back,Result *res, int first);   
 void render_category(SDL_Renderer *renderer,Glyph * g,int x,int y,int *size,int w,Category *c);
+#endif

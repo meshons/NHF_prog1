@@ -247,8 +247,10 @@ void render_category(SDL_Renderer *renderer, Glyph *g, int x, int y, int *size, 
         Result *list;
         unsigned short cname[namesize];
         ascii_2_unicode(c->name, cname);
-        background(renderer, x, y + *size, w, 40, &c_top);
-        text(cname, renderer, g, x + 30, y +3 + *size, LEFT, namesize);
+        if(y+*size>=0){
+            background(renderer, x, y + *size, w, 40, &c_top);
+            text(cname, renderer, g, x + 30, y +3 + *size, LEFT, namesize);            
+        }
         yinc += 40;
         int loopbackermax = (int)c->all, loopbacker = 0;
         bool duo = false;
@@ -266,7 +268,12 @@ void render_category(SDL_Renderer *renderer, Glyph *g, int x, int y, int *size, 
                 duo = true;
                 render_result(renderer, g, x, y + yinc + *size, w, 40, &c_result2, list, (int)c->res->t);
             }
+            
             yinc += 40;
+        }
+        if(y+*size<0){
+                background(renderer, x, 0, w, 40, &c_top);
+                text(cname, renderer, g, x + 30, 0, LEFT, namesize);
         }
         *size += yinc + 40;
 

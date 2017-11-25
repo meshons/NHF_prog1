@@ -46,7 +46,6 @@ Result * R_result_new(Category * list,R_list listtype);
 void R_result_delete(Category * list, Result * del);
 Result * R_result_search(Category * list,Result * rel, char level);
 
-bool R_result_issorted(Category * list);
 void R_result_sort(Category * list);
 Result * R_new();// kell?
 

@@ -155,8 +155,16 @@ int main(int argc, char **argv)
     Uint32 lastFrameTimeElapsed = 0;
     float deltaTime;
 
+    int left_cat = 0;
+    int next_left = 0;
+    int right_cat = 0;
+    int next_right = 0;
+
+
     while (!quit)
     {
+        left_cat = next_left;
+        right_cat = next_right;
         elapsedTime = SDL_GetTicks();
         i = roundf(fi);
         j = roundf(fr);
@@ -204,17 +212,38 @@ int main(int argc, char **argv)
 
         left_k = 0;
         right_k = 0;
-        int l_c;
-        for (l_c = 0; l_c < left_size; l_c++)
+        int first_left = 0;
+        int first_right= 0;
+        /*for (l_c = 0; l_c < left_size; l_c++)
         {
             Category *cl = R_category_find(list, left_cats+namesize*l_c);
             render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl);
+        }*/
+        while(left_k<=height+first_left){
+            if(left_cat >= left_size)left_cat=0;
+            Category *cl = R_category_find(list, left_cats+namesize*left_cat);
+            render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl);
+            if(first_left == 0){
+                if(fi < (float)~left_k ){
+                    fi += left_k;
+                    next_left = left_cat + 1;
+                }
+                first_left = left_k;
+            }
+            left_cat++;
         }
-        int r_c;
-        for (r_c = 0; r_c < right_size; r_c++)
-        {
-            Category *cr = R_category_find(list, right_cats+namesize*r_c);
-            render_category(renderer, ttf_normal, width/2 + 1, j, &right_k, width / 2 - 1, cr);
+        while(right_k<=height+first_right){
+            if(right_cat >= right_size)right_cat=0;
+            Category *cr = R_category_find(list, right_cats+namesize*right_cat);
+            render_category(renderer, ttf_normal, width / 2 +1, j, &right_k, width / 2 - 1, cr);
+            if(first_right == 0){
+                if(fr < (float)~right_k ){
+                    fr += right_k;
+                    next_right = right_cat + 1;
+                }
+                first_right = right_k;
+            }
+            right_cat++;
         }
         //render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, c->next);
 
@@ -241,10 +270,10 @@ int main(int argc, char **argv)
         deltaTime = (elapsedTime - lastFrameTimeElapsed) / 1000.0f;
         fi -= 100.0f * deltaTime;
         fr -= 100.0f * deltaTime;
-        if (fi < -height)
+        /*if (fi < -height)
             fi = height;
         if (fr < -height)
-            fr = height;
+            fr = height;*/
         lastFrameTimeElapsed = elapsedTime;
         //valami
 

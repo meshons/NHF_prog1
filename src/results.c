@@ -250,36 +250,11 @@ Result *R_result_search(Category *list, Result *rel, char level)
     return NULL;
 }
 
-bool R_result_issorted(Category * list){
-        Result * r;
-        int pre = 0;
-        for(r=list->res;r!=NULL;r=r->next){
-            if(pre>(int)r->pos)
-                return false;
-            pre = (int)r->pos;
-        }
-        return true;
-}
-
 void R_result_sort(Category * list){
-    if(R_result_issorted(list)==false){
-        Result * current, * tmp, *pre;
-        if(list->res!=NULL){
-            current = list->res->next;
-            pre = list->res;
-            while(current!=NULL){
-                if(pre->pos>current->pos){
-                    //az előző nagyobb vagyis valahol előrébb kell lennie
-                    if(pre->next==current){
-                        
-                    }else{
+    bool sorted = false;
+    
+    if(!sorted){
 
-                    }
-                }
-                pre = current;
-                current=current->next;
-            }
-        }
     }
 }
 

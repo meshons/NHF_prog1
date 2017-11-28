@@ -19,7 +19,6 @@
 #include "file.h"
 
 bool error = false;
-unsigned char loglevel = 1;
 
 int main(int argc, char **argv)
 {
@@ -28,14 +27,12 @@ int main(int argc, char **argv)
 
     Setting set;
     Settings_load(&set);
-    loglevel = set.loglevel;
 
     SDL_Event event;
     SDL_Renderer *renderer;
     SDL_Window *window;
 
     Category *list = NULL;
-    LOG_str(set.res_file);
     FILE *resultfile = fopen(set.res_file, "rt");
     if (resultfile == NULL)
     {
@@ -66,9 +63,8 @@ int main(int argc, char **argv)
     int left_size;
     char *right_cats;
     int right_size;
-    left_cats = R_load_cats("left.txt", &left_size);
-    right_cats = R_load_cats("right.txt", &right_size);
-    LOG_str(left_cats);
+    left_cats = R_load_cats(set.left_file, &left_size);
+    right_cats = R_load_cats(set.right_file, &right_size);
 
     if (set.res_refreshrate != 0)
     {
@@ -89,7 +85,7 @@ int main(int argc, char **argv)
             if (set.format == txt)
                 TXT_read(resfile, &list, result);
             else if (set.format == csv)
-                CSV_read(resfile, &list, result, win1252);
+                CSV_read(resfile, &list, result, set.charset);
             fclose(resfile);
         }
     }
@@ -107,14 +103,20 @@ int main(int argc, char **argv)
     }
     else
     {
-        FILE *resfile = fopen(set.start_file, "rt");
-        if (resfile != NULL)
+        FILE *startfile = fopen(set.start_file, "rt");
+        if (startfile != NULL)
         {
             if (set.format == txt)
-                TXT_read(resfile, &list, start);
-            fclose(resfile);
+                TXT_read(startfile, &list, start);
+            else if (set.format == csv)
+                CSV_read(startfile, &list, start, set.charset);
+            fclose(startfile);
         }
     }
+
+
+
+
 
     Glyph ttf_normal[max_glyph];
     SDL_Color c_black = {0, 0, 0, 0};
@@ -138,7 +140,7 @@ int main(int argc, char **argv)
     loadGlyphs(ttf_normal, font, c_black, renderer);
 
     quit = 0;
-    int FPS = set.speed;
+    //int FPS = set.speed;
     long FrameStartTimeMs = 0;
 
     int x_top = 0, x_bot = height;
@@ -160,6 +162,7 @@ int main(int argc, char **argv)
     int right_cat = 0;
     int next_right = 0;
 
+    bool stop=false;
 
     while (!quit)
     {
@@ -187,10 +190,10 @@ int main(int argc, char **argv)
                     fi = 100;
                     break;
                 case SDLK_UP:
-                    fr = 0;
+                    stop=false;
                     break;
                 case SDLK_DOWN:
-                    fr += 10;
+                    stop=true;
                     break;
                 }
                 break;
@@ -213,36 +216,59 @@ int main(int argc, char **argv)
         left_k = 0;
         right_k = 0;
         int first_left = 0;
-        int first_right= 0;
+        int first_right = 0;
         /*for (l_c = 0; l_c < left_size; l_c++)
         {
             Category *cl = R_category_find(list, left_cats+namesize*l_c);
-            render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl);
+           
+         render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl);
         }*/
-        while(left_k<=height+first_left){
-            if(left_cat >= left_size)left_cat=0;
-            Category *cl = R_category_find(list, left_cats+namesize*left_cat);
+        int afas=0;
+        while (left_k <= height + first_left && afas++<100)
+        {
+            if (left_cat >= left_size)
+                left_cat = 0;
+            Category *cl = R_category_find(list, left_cats + namesize * left_cat);
+            //if (cl != NULL){
             render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl);
-            if(first_left == 0){
-                if(fi < (float)~left_k ){
+            if (first_left == 0)
+            {
+                if (fi < (float)~left_k)
+                {
                     fi += left_k;
                     next_left = left_cat + 1;
                 }
                 first_left = left_k;
-            }
+            }/*}else
+            if(first_left==0){
+                first_left==1;
+            }else{
+                if(left_cat == 0)left_k=height*2;
+            }*/
             left_cat++;
         }
-        while(right_k<=height+first_right){
-            if(right_cat >= right_size)right_cat=0;
-            Category *cr = R_category_find(list, right_cats+namesize*right_cat);
-            render_category(renderer, ttf_normal, width / 2 +1, j, &right_k, width / 2 - 1, cr);
-            if(first_right == 0){
-                if(fr < (float)~right_k ){
+        afas=0;
+        while (right_k <= height + first_right && afas++<100)
+        {
+            if (right_cat >= right_size)
+                right_cat = 0;
+            Category *cr = R_category_find(list, right_cats + namesize * right_cat);
+            //if (cr != NULL){
+            render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, cr);
+            if (first_right == 0)
+            {
+                if (fr < (float)~right_k)
+                {
                     fr += right_k;
                     next_right = right_cat + 1;
                 }
                 first_right = right_k;
-            }
+            }/*}else
+            if(first_right==0){
+                first_right==1;
+            }else{
+                if(right_cat == 0)right_k=height*2;
+            }*/
             right_cat++;
         }
         //render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, c->next);
@@ -268,8 +294,10 @@ int main(int argc, char **argv)
         x_bot++;
 
         deltaTime = (elapsedTime - lastFrameTimeElapsed) / 1000.0f;
+        if(!stop){
         fi -= 100.0f * deltaTime;
         fr -= 100.0f * deltaTime;
+        }
         /*if (fi < -height)
             fi = height;
         if (fr < -height)

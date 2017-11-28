@@ -98,6 +98,8 @@ Result *TXT_line(char *line, R_charset charset, R_list listtype)
     {
         sscanf(cpos, "%d", &pos);
         rnew->pos = (atomic_int)pos;
+    }else{
+        rnew->pos = (atomic_int)998;
     }
     if (sscanf(ct, "%d:%d:%d", &h, &m, &s) == 3)
         t = h * 60 * 60 + m * 60 + s;
@@ -174,6 +176,7 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
                 r_exist->starttime = r->starttime;
             }
             free(r);
+            r_exist->updated = time(0);
         }
         else
         {
@@ -185,6 +188,7 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
                 for (i = 0; r->category[i] != 0; i++)
                     c->name[i] = r->category[i];
             }
+            r->updated = time(0);
             R_result_add(c, r, listtype);
         }
     }
@@ -211,6 +215,7 @@ Result *CSV_line(char *line, R_charset charset, R_list listtype)
     char club[namesize * 3] = {0};
     char ct[namesize] = {0};
     int pos = 0;
+    char ce[namesize] = {0};
     int t, h, m, s;
 
     while (line[i] != '\n' && line[i] != 0)
@@ -251,6 +256,10 @@ Result *CSV_line(char *line, R_charset charset, R_list listtype)
                 if (line[i] != '\"' && listtype == result)
                     ct[j++] = line[i];
                 break;
+            case 14:
+                if (line[i] != '\"' && listtype == result)
+                    ce[j++] = line[i];
+                break;
             case 11:
                 if (line[i] != '\"' && listtype == start)
                     ct[j++] = line[i];
@@ -260,7 +269,7 @@ Result *CSV_line(char *line, R_charset charset, R_list listtype)
                     category[j++] = line[i];
                 break;
             case 57:
-                if (line[i] != '\"')
+                if (line[i] != '\"' && listtype == result)
                     cpos[j++] = line[i];
                 break;
             default:
@@ -285,15 +294,21 @@ Result *CSV_line(char *line, R_charset charset, R_list listtype)
 
     if (listtype == start)
     {
+        rnew->pos = 996;
         rnew->starttime = (atomic_int)t;
     }
     else if (listtype == result)
     {
         rnew->t = (atomic_int)t;
-        if (cpos[0] == 0)
-            pos = 0;
+        if (cpos[0] == 0 && ce[0] == 0)
+            pos = 998;
+        else
+        if(cpos[0] == 0 && ce[0] != 0)
+            pos = 999;
         else
             sscanf(cpos, "%d", &pos);
+        if(cpos[0] == 'V' && cpos[1] == 'k')
+            pos = 997;
         rnew->pos = (atomic_int)pos;
     }
 
@@ -335,7 +350,7 @@ Result *CSV_line(char *line, R_charset charset, R_list listtype)
 
 void CSV_read(FILE *f, Category **list, R_list listtype, R_charset charset)
 {
-    int size = 2000;
+    const int size = 2000;
     if (f == NULL)
     {
         LOG_str("No result file");
@@ -343,7 +358,7 @@ void CSV_read(FILE *f, Category **list, R_list listtype, R_charset charset)
     }
     Result *r = NULL, *r_exist = NULL;
     int i;
-    char line[size];
+    char *line = calloc(size, sizeof(char));
     fgets(line, size, f);
     while (fgets(line, size, f) != NULL)
     {
@@ -364,6 +379,7 @@ void CSV_read(FILE *f, Category **list, R_list listtype, R_charset charset)
                 r_exist->pos = r->pos;
                 r_exist->t = r->t;
             }
+            r_exist->updated = time(0);
             free(r);
         }
         else
@@ -376,9 +392,11 @@ void CSV_read(FILE *f, Category **list, R_list listtype, R_charset charset)
                 for (i = 0; r->category[i] != 0; i++)
                     c->name[i] = r->category[i];
             }
+            r->updated = time(0);
             R_result_add(c, r, result);
         }
     }
+    free(line);
 }
 
 void *readerthread(void *arg)
@@ -387,6 +405,7 @@ void *readerthread(void *arg)
     FILE *fp;
     clock_t timestart;
     clock_t timeend;
+    bool first = false;
     while (true)
     {
         timestart = clock();
@@ -403,8 +422,11 @@ void *readerthread(void *arg)
             }
             fclose(fp);
         }
+        deleteAFK(*(set->list));
+        if(set->type == result)R_result_sort(*(set->list));
+
         timestart = set->refreshrate - (clock() - timestart) / CLOCKS_PER_SEC;
-        if (timestart > 0)
+        if (timestart > 0 && first)
         {
 #ifdef _WIN32
             Sleep(timestart * 1000);
@@ -412,6 +434,7 @@ void *readerthread(void *arg)
             sleep(timestart * 1000);
 #endif
         }
+        if(first == false)first = true;
     }
     pthread_exit(NULL);
 }

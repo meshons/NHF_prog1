@@ -39,10 +39,8 @@ R_charset TXT_getcharset(FILE *f);
 Result * TXT_line(char * line,R_charset charset, R_list listtype);
 void TXT_read(FILE * f,Category ** list, R_list listtype);
 
-/* IOF */
 Result * IOF_block(char * line,R_charset charset, R_list listtype);
 
-/* csv */
 Result * CSV_line(char * line,R_charset charset,R_list listtype);
 void CSV_read(FILE *f, Category **list,R_list listtype, R_charset charset);
 

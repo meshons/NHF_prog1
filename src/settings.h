@@ -20,7 +20,7 @@ typedef struct Setting{
     unsigned short loglevel;
     int res_refreshrate;
     int start_refreshrate;
-    //int nulltime;
+    int nulltime;
 }Setting;
 
 extern unsigned char loglevel;

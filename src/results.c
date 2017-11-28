@@ -11,12 +11,8 @@ Result *R_result_new(Category *list, R_list listtype)
         return NULL;
     }
     rnew->next = NULL;
-    rnew->shown = false;
-    rnew->poschanged = false;
-    rnew->prev = 0;
+
     Result *rlist = NULL;
-    if (list == NULL)
-        LOG_str("he");
     if (list->res == NULL)
     {
         list->res = rnew;
@@ -36,9 +32,6 @@ Result *R_result_new(Category *list, R_list listtype)
 void R_result_add(Category *list, Result *r, R_list listtype)
 {
     r->next = NULL;
-    r->shown = false;
-    r->poschanged = false;
-    r->prev = 0;
     Result *rlist = NULL;
     if (list == NULL)
     {
@@ -50,7 +43,6 @@ void R_result_add(Category *list, Result *r, R_list listtype)
     }
     else
     {
-        //for(rlist=list->res;rlist->next!=NULL;rlist=rlist->next);
         rlist = list->res;
         while (rlist->next != NULL)
         {
@@ -72,12 +64,16 @@ void R_result_delete(Category *list, Result *del)
     Result *rlist;
     list->all--;
     list->in--;
+    if(list->res==del){
+        list->res = del->next;
+    }else{
     for (rlist = list->res; rlist->next != NULL; rlist = rlist->next)
         if (rlist->next == del)
         {
             rlist->next = del->next;
             break;
         }
+    }
     free(del);
 }
 
@@ -148,17 +144,18 @@ void R_category_deleteresults(Category *list)
 
 void R_category_delete(Category **list, Category *del)
 {
-    //hibás, az elsőt nem törli
     Category *clist;
     R_category_deleteresults(del);
+    if(*list == del){
+        *list = (*list)->next;
+    }{
     for (clist = *list; clist != NULL; clist = clist->next)
         if (clist->next == del)
         {
             clist->next = del->next;
             break;
         }
-    if (*list == del)
-        *list = (*list)->next;
+    }
     free(del);
 }
 
@@ -250,8 +247,74 @@ Result *R_result_search(Category *list, Result *rel, char level)
     return NULL;
 }
 
-void R_result_sort(Category * list){
-    bool changed = false;
+void R_result_sort(Category *list)
+{
+    Category *c = NULL;
+    for (c = list; c != NULL; c = c->next)
+    {
+        insertionSort(&(c->res));
+    }
+}
+
+void insertionSort(Result **head_ref)
+{
+    Result *sorted = NULL;
+    Result *current = *head_ref;
+    while (current != NULL)
+    {
+        Result *next = current->next;
+        sortedInsert(&sorted, current);
+        current = next;
+    }
+
+    *head_ref = sorted;
+}
+
+void sortedInsert(Result **head_ref, Result *new_node)
+{
+    Result *current;
+    if (*head_ref == NULL || (*head_ref)->pos >= new_node->pos)
+    {
+        new_node->next = *head_ref;
+        *head_ref = new_node;
+    }
+    else
+    {
+        current = *head_ref;
+        if (new_node->pos > 997)
+        {
+            while (current->next != NULL)
+            {
+                current = current->next;
+            }
+            new_node->next = current->next;
+            current->next = new_node;
+        }
+        else
+        {
+            while (current->next != NULL &&
+                   current->next->pos <= new_node->pos)
+            {
+                current = current->next;
+            }
+            new_node->next = current->next;
+            current->next = new_node;
+        }
+    }
+}
+
+void deleteAFK(Category *list){
+    Category *c = NULL;
+    time_t now = time(0);
+    for (c = list; c != NULL; c = c->next)
+    {
+        Result *r;
+        for(r=c->res;r!=NULL;r=r->next){
+            if((now - r->updated > 360 && r->pos!=996) || (now - r->updated > 36000 && r->pos==996)){
+                R_result_delete(c,r);
+            }
+        }
+    }
 }
 
 Result *R_new()
@@ -264,7 +327,7 @@ Result *R_new()
     return r;
 }
 
-char * R_load_cats(char *filename,int *size)
+char *R_load_cats(char *filename, int *size)
 {
     int lines = 0;
     FILE *fp = fopen(filename, "rt");
@@ -278,11 +341,12 @@ char * R_load_cats(char *filename,int *size)
         }
     }
     lines++;
-    printf("%d",lines);
+    printf("%d", lines);
     fclose(fp);
-    char *cats = malloc(sizeof(char)*lines*namesize);
-    memset(cats, 0, sizeof(char)*lines*namesize);
-    if(cats==NULL){
+    char *cats = malloc(sizeof(char) * lines * namesize);
+    memset(cats, 0, sizeof(char) * lines * namesize);
+    if (cats == NULL)
+    {
         return NULL;
     }
     fp = fopen(filename, "rt");
@@ -293,36 +357,26 @@ char * R_load_cats(char *filename,int *size)
     bool run = true;
     while (run)
     {
-        if (fgets(cats+i*namesize, namesize, fp) != NULL)
+        if (fgets(cats + i * namesize, namesize, fp) != NULL)
         {
-            LOG_str(cats+i*namesize);
             i++;
         }
-        if(lines==i+1)run=false;
-        
+        if (lines == i + 1)
+            run = false;
     }
-    for(i=0;i<lines*namesize;i++)
-        if(*(cats+i) == '\n')
-            *(cats+i) = 0;
-    
+    for (i = 0; i < lines * namesize; i++)
+        if (*(cats + i) == '\n')
+            *(cats + i) = 0;
+
     *size = lines;
     fclose(fp);
     return cats;
 }
-/*void R_clear_cats(char **cats,int size){
-    if(cats!=NULL){
-    int i = 0;
-    while(i<=size){
-        free(*(cats + i*namesize));
-        i++;
-    }
-    free(cats);
-    }
-}*/
 
-int pow_dec(int n){
+int pow_dec(int n)
+{
     int i, sum = 1;
-    for(i=0;i<n;i++)
+    for (i = 0; i < n; i++)
         sum = sum * 10;
     return sum;
 }

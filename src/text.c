@@ -144,11 +144,24 @@ void background(SDL_Renderer *renderer, int x, int y, int w, int h, SDL_Color *c
 void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h, SDL_Color *back, Result *res, int first)
 {
     background(renderer, x, y, w, h, back);
+    unsigned short start[6] = {'s','t','a','r','t',0};
+    unsigned short hiba[5] = {'h','i','b','a',0};
+    unsigned short vk[30] = {'v','k',0};
     y+=3;
     unsigned short cpos[10] = {0};
     digit_2_uni((int)(res->pos), cpos);
-    if (res->pos < 9500)
+    if (res->pos < 990)
         text(cpos, renderer, g, x + 75, y, RIGHT, 10);
+    else
+    if(res->pos == 996)
+        text(start, renderer, g, x + 75, y, RIGHT, 10);
+        else
+    if(res->pos == 997)
+        text(vk, renderer, g, x + 75, y, RIGHT, 10);
+        else
+    if(res->pos == 998 || res->pos==999)
+        text(hiba, renderer, g, x + 75, y, RIGHT, 10);
+
     unsigned short name[namesize * 2 + 1];
     int i, d = 0;
     for (i = 0; res->surname[i] != 0; i++)
@@ -173,11 +186,11 @@ void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h,
         time(&now);
         nowinfo = localtime(&now);
         int nowint = nowinfo->tm_hour * 60 * 60 + nowinfo->tm_min * 60 + nowinfo->tm_sec;
-        dtime = res->starttime - nowint;
-        if (dtime >= 0)
+        dtime = res->starttime;
+        /*if (dtime >= 0)
             ctime[l++] = '+';
         else
-            ctime[l++] = '-';
+            ctime[l++] = '-';*/
     }
     int dmin = dtime / 60;
     int dsec = dtime % 60;
@@ -201,8 +214,11 @@ void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h,
     if (dtime > 0 || dsec > 0)
         ctime[l++] = dsec % 10 + '0';
     text((unsigned short *)res->club, renderer, g, x + 450, y, LEFT, 18);
-    text(ctime, renderer, g, x + 800, y, RIGHT, 10);
-    if (res->t > first)
+    if(res->t==0 && res->starttime!=0)
+        text(ctime, renderer, g, x + 920, y, RIGHT, 10);
+    else
+        text(ctime, renderer, g, x + 800, y, RIGHT, 10);
+    if (res->t > first && res->t!=0)
     {
          dtime = res->t - first;
          dmin = dtime / 60;
@@ -230,9 +246,12 @@ void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h,
             ditime[l++] = dsec / 10 + '0';
         else if (dsec < 10 && dtime > 0)
             ditime[l++] = '0';
-        //if (dtime > 0 || dsec > 0)
             ditime[l++] = dsec % 10 + '0';
         text(ditime, renderer, g, x + 920, y, RIGHT, 10);
+    }else
+    if(res->starttime!=0){
+        
+
     }
 }
 
@@ -258,6 +277,8 @@ void render_category(SDL_Renderer *renderer, Glyph *g, int x, int y, int *size, 
         {
             if (loopbacker++ > loopbackermax)
                 break;
+            if(list->surname[0] == 'V' && list->surname[1]=='a' && list->surname[2] == 'k' && list->surname[3] =='a' && list->surname[4]=='n' && list->surname[5] == 't' && list->surname[6] == 0)
+                continue;
             if (duo)
             {
                 duo = false;

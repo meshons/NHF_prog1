@@ -24,18 +24,13 @@ typedef struct Time{
 }Time;
 
 typedef struct Result{
-    atomic_short pos,prev;
+    atomic_short pos;
     atomic_ushort vorname[namesize],  surname[namesize];
     atomic_ushort club[namesize];
     atomic_char category[namesize];
     atomic_int t;
-    atomic_bool shown,poschanged;
     atomic_int starttime;
-
-    atomic_bool appaered, appaering;
-    atomic_bool deleted, deleting;
-    atomic_bool changing, changed;
-
+    time_t updated;
     struct Result *next;
 }Result;
 
@@ -52,9 +47,10 @@ void R_result_delete(Category * list, Result * del);
 Result * R_result_search(Category * list,Result * rel, char level);
 
 void R_result_sort(Category * list);
-Result * R_new();// kell?
-
-//void R_result_sort(Category * list);
+void insertionSort(Result **head_ref);
+void sortedInsert(Result** head_ref, Result* new_node);
+Result * R_new();
+void deleteAFK(Category *list);
 
 Category * R_category_new(Category ** list);
 Category * R_category_find(Category * list,char * name);
@@ -71,8 +67,6 @@ R_format R_ascii_format(char * str);
 
 char * R_load_cats(char * filename,int * size);
 void R_clear_cats(char * cats,int size);
-/*
-void R_startlist_load(Category * list,char * filename,R_format format,R_charset charset);*/
 
 int pow_dec(int n);
 #endif

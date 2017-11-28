@@ -14,10 +14,8 @@ typedef struct Setting{
     char start_file[30];
     char left_file[30];
     char right_file[30];
-    int speed;
     int leftspeed;
     int rightspeed;
-    unsigned short loglevel;
     int res_refreshrate;
     int start_refreshrate;
     int nulltime;

@@ -141,25 +141,22 @@ void background(SDL_Renderer *renderer, int x, int y, int w, int h, SDL_Color *c
     SDL_RenderFillRect(renderer, &rect);
 }
 
-void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h, SDL_Color *back, Result *res, int first)
+void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h, SDL_Color *back, Result *res, int first, int nulltime)
 {
     background(renderer, x, y, w, h, back);
-    unsigned short start[6] = {'s','t','a','r','t',0};
-    unsigned short hiba[5] = {'h','i','b','a',0};
-    unsigned short vk[30] = {'v','k',0};
-    y+=3;
+    unsigned short start[6] = {'s', 't', 'a', 'r', 't', 0};
+    unsigned short hiba[5] = {'h', 'i', 'b', 'a', 0};
+    unsigned short vk[30] = {'v', 'k', 0};
+    y += 3;
     unsigned short cpos[10] = {0};
     digit_2_uni((int)(res->pos), cpos);
     if (res->pos < 990)
         text(cpos, renderer, g, x + 75, y, RIGHT, 10);
-    else
-    if(res->pos == 996)
+    else if (res->pos == 996)
         text(start, renderer, g, x + 75, y, RIGHT, 10);
-        else
-    if(res->pos == 997)
+    else if (res->pos == 997)
         text(vk, renderer, g, x + 75, y, RIGHT, 10);
-        else
-    if(res->pos == 998 || res->pos==999)
+    else if (res->pos == 998 || res->pos == 999)
         text(hiba, renderer, g, x + 75, y, RIGHT, 10);
 
     unsigned short name[namesize * 2 + 1];
@@ -214,18 +211,18 @@ void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h,
     if (dtime > 0 || dsec > 0)
         ctime[l++] = dsec % 10 + '0';
     text((unsigned short *)res->club, renderer, g, x + 450, y, LEFT, 18);
-    if(res->t==0 && res->starttime!=0)
+    if (res->t == 0 && res->starttime != 0)
         text(ctime, renderer, g, x + 920, y, RIGHT, 10);
     else
         text(ctime, renderer, g, x + 800, y, RIGHT, 10);
-    if (res->t > first && res->t!=0)
+    if (res->t > first && res->t != 0)
     {
-         dtime = res->t - first;
-         dmin = dtime / 60;
-         dsec = dtime % 60;
-         k = 5;
-         l = 0;
-         ditime[l++] = '+';
+        dtime = res->t - first;
+        dmin = dtime / 60;
+        dsec = dtime % 60;
+        k = 5;
+        l = 0;
+        ditime[l++] = '+';
         if (dmin > 0)
         {
             while (k >= 0)
@@ -238,7 +235,8 @@ void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h,
             }
             ditime[l++] = ':';
         }
-        if(dmin == 0){
+        if (dmin == 0)
+        {
             ditime[l++] = '0';
             ditime[l++] = ':';
         }
@@ -246,29 +244,68 @@ void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h,
             ditime[l++] = dsec / 10 + '0';
         else if (dsec < 10 && dtime > 0)
             ditime[l++] = '0';
-            ditime[l++] = dsec % 10 + '0';
+        ditime[l++] = dsec % 10 + '0';
         text(ditime, renderer, g, x + 920, y, RIGHT, 10);
-    }else
-    if(res->starttime!=0){
-        
+    }
+    if (res->starttime != 0 && res->t == 0 && res->pos == 996)
+    {
+        time_t now = time(0);
+        struct tm *localnow;
+        localnow = localtime(&now);
+        now = localnow->tm_hour * 60 * 60 + localnow->tm_min * 60 + localnow->tm_sec;
+        int dif = now - (res->starttime + nulltime);
+        l = 0;
+        k = 5;
+        unsigned short sdif[15] = {0};
+        if (dif < 0)
+        {
+            sdif[l++] = '-';
+            dif = dif * -1;
+        }
+        dmin = dif / 60;
+        dsec = dif % 60;
 
+        if (dmin > 0)
+        {
+            while (k >= 0)
+            {
+                if (dmin >= pow_dec(k))
+                {
+                    sdif[l++] = ((dmin % (10 * (pow_dec(k)))) / pow_dec(k)) + '0';
+                }
+                k--;
+            }
+            sdif[l++] = ':';
+        }
+        if (dmin == 0)
+        {
+            sdif[l++] = '0';
+            sdif[l++] = ':';
+        }
+        if (dsec >= 10)
+            sdif[l++] = dsec / 10 + '0';
+        else if (dsec < 10)
+            sdif[l++] = '0';
+        sdif[l++] = dsec % 10 + '0';
+        text(sdif, renderer, g, x + 800, y, RIGHT, 10);
     }
 }
 
-void render_category(SDL_Renderer *renderer, Glyph *g, int x, int y, int *size, int w, Category *c)
+void render_category(SDL_Renderer *renderer, Glyph *g, int x, int y, int *size, int w, Category *c, int nulltime)
 {
     if (c != NULL)
     {
         SDL_Color c_result1 = {255, 255, 255, 0};
         SDL_Color c_result2 = {255, 227, 163, 0};
-        SDL_Color c_top = {145, 187, 255,0};
+        SDL_Color c_top = {145, 187, 255, 0};
         int yinc = 0;
         Result *list;
         unsigned short cname[namesize];
         ascii_2_unicode(c->name, cname);
-        if(y+*size>=0){
+        if (y + *size >= 0)
+        {
             background(renderer, x, y + *size, w, 40, &c_top);
-            text(cname, renderer, g, x + 30, y +3 + *size, LEFT, namesize);            
+            text(cname, renderer, g, x + 30, y + 3 + *size, LEFT, namesize);
         }
         yinc += 40;
         int loopbackermax = (int)c->all, loopbacker = 0;
@@ -277,26 +314,26 @@ void render_category(SDL_Renderer *renderer, Glyph *g, int x, int y, int *size, 
         {
             if (loopbacker++ > loopbackermax)
                 break;
-            if(list->surname[0] == 'V' && list->surname[1]=='a' && list->surname[2] == 'k' && list->surname[3] =='a' && list->surname[4]=='n' && list->surname[5] == 't' && list->surname[6] == 0)
+            if (list->surname[0] == 'V' && list->surname[1] == 'a' && list->surname[2] == 'k' && list->surname[3] == 'a' && list->surname[4] == 'n' && list->surname[5] == 't' && list->surname[6] == 0)
                 continue;
             if (duo)
             {
                 duo = false;
-                render_result(renderer, g, x, y + yinc + *size, w, 40, &c_result1, list, (int)c->res->t);
+                render_result(renderer, g, x, y + yinc + *size, w, 40, &c_result1, list, (int)c->res->t, nulltime);
             }
             else
             {
                 duo = true;
-                render_result(renderer, g, x, y + yinc + *size, w, 40, &c_result2, list, (int)c->res->t);
+                render_result(renderer, g, x, y + yinc + *size, w, 40, &c_result2, list, (int)c->res->t, nulltime);
             }
-            
+
             yinc += 40;
         }
-        if(y+*size<0){
-                background(renderer, x, 0, w, 40, &c_top);
-                text(cname, renderer, g, x + 30, 0, LEFT, namesize);
+        if (y + *size < 0)
+        {
+            background(renderer, x, 0, w, 40, &c_top);
+            text(cname, renderer, g, x + 30, 0, LEFT, namesize);
         }
         *size += yinc + 40;
-
     }
 }

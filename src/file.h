@@ -21,7 +21,6 @@
 #define fileh
 
 extern bool error;
-extern unsigned char loglevel;
 
 struct thread_arg{
     char filename[namesize];
@@ -39,7 +38,7 @@ R_charset TXT_getcharset(FILE *f);
 Result * TXT_line(char * line,R_charset charset, R_list listtype);
 void TXT_read(FILE * f,Category ** list, R_list listtype);
 
-Result * IOF_block(char * line,R_charset charset, R_list listtype);
+Result * IOF_read(FILE *f,R_charset charset, R_list listtype);
 
 Result * CSV_line(char * line,R_charset charset,R_list listtype);
 void CSV_read(FILE *f, Category **list,R_list listtype, R_charset charset);

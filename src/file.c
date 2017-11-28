@@ -98,7 +98,9 @@ Result *TXT_line(char *line, R_charset charset, R_list listtype)
     {
         sscanf(cpos, "%d", &pos);
         rnew->pos = (atomic_int)pos;
-    }else{
+    }
+    else
+    {
         rnew->pos = (atomic_int)998;
     }
     if (sscanf(ct, "%d:%d:%d", &h, &m, &s) == 3)
@@ -159,7 +161,7 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
     LOG_str(R_charset_ascii(charset));
     Result *r, *r_exist;
     int i;
-    char line[ 6 * (namesize + 1)];
+    char line[6 * (namesize + 1)];
     while (fgets(line, size, f) != NULL)
     {
         r = TXT_line(line, charset, listtype);
@@ -195,8 +197,64 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
 }
 
 //IOF
-Result *IOF_block(char *line, R_charset charset, R_list listtype)
+Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
 {
+    int size = 6 * (namesize + 1);
+    if (f == NULL)
+    {
+        LOG_str("No result file");
+        error = true;
+    }
+    Result *r, *r_exist;
+    int i;
+    char line[6 * (namesize + 1)];
+    char ShortName[12] = "<ShortName>";
+    int SN_l = 11;
+    char Family[9] = "<Family>";
+    int F_l = 8;
+    char Given[8] = "<Given>";
+    int G_l = 7;
+    char Name[7] = "<Name>";
+    int N_l = 6;
+    char StartTime[12] = "<StartTime>"; 
+    int ST_l = 11;
+    char Time[7] = "<Time>";
+    int T_l=6;
+    char Position[11] = "<Position>";
+    int P_l=10;
+    char Status[9] = "<Status>";
+    int S_l = 8;
+    bool find = false;
+    bool result = false;
+
+    int multiplier = 1;
+    char cpos[namesize] = {0};
+    char category[namesize] = {0};
+    char surname[namesize * 3] = {0};
+    char vorname[namesize * 3] = {0};
+    char club[namesize * 3] = {0};
+    char ct[namesize] = {0};
+    int pos;
+    int t, h, m, s;
+
+    while (fgets(line, size, f) != NULL){
+
+
+
+        if(find){
+
+
+            memset(cpos, 0, namesize);
+            memset(category,0,namesize);
+            memset(surname,0,namesize*3);
+            memset(vorname,0,namesize*3);
+            memset(club,0,namesize*3);
+            memset(ct,0,namesize);
+            pos = 0;
+            t=h=m=s=0;
+            find = false;
+        }
+    }
 }
 
 //csv
@@ -302,12 +360,11 @@ Result *CSV_line(char *line, R_charset charset, R_list listtype)
         rnew->t = (atomic_int)t;
         if (cpos[0] == 0 && ce[0] == 0)
             pos = 998;
-        else
-        if(cpos[0] == 0 && ce[0] != 0)
+        else if (cpos[0] == 0 && ce[0] != 0)
             pos = 999;
         else
             sscanf(cpos, "%d", &pos);
-        if(cpos[0] == 'V' && cpos[1] == 'k')
+        if (cpos[0] == 'V' && cpos[1] == 'k')
             pos = 997;
         rnew->pos = (atomic_int)pos;
     }
@@ -423,10 +480,11 @@ void *readerthread(void *arg)
             fclose(fp);
         }
         deleteAFK(*(set->list));
-        if(set->type == result)R_result_sort(*(set->list));
+        if (set->type == result)
+            R_result_sort(*(set->list));
 
         timestart = set->refreshrate - (clock() - timestart) / CLOCKS_PER_SEC;
-        if (timestart > 0 && first)
+        if (timestart > 0) // && first)
         {
 #ifdef _WIN32
             Sleep(timestart * 1000);
@@ -434,7 +492,7 @@ void *readerthread(void *arg)
             sleep(timestart * 1000);
 #endif
         }
-        if(first == false)first = true;
+        //if(first == false)first = true;
     }
     pthread_exit(NULL);
 }

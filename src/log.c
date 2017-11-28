@@ -1,7 +1,7 @@
 #include "log.h"
 
 bool LOG_init(){
-    loggerfile=fopen("log.txt","a+t");
+    loggerfile=fopen("log.txt","w+t");
     if(loggerfile!=NULL)
         return true;
     else

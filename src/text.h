@@ -30,6 +30,6 @@ void text(unsigned short * uni,SDL_Renderer *renderer,Glyph * g,int x,int y, Ali
 void texta(atomic_ushort * uni,SDL_Renderer *renderer,Glyph * g,int x,int y, Align a);
 void background(SDL_Renderer *renderer,int x, int y, int w, int h, SDL_Color * c);
 
-void render_result(SDL_Renderer *renderer,Glyph * g,int x,int y,int w, int h, SDL_Color * back,Result *res, int first);   
-void render_category(SDL_Renderer *renderer,Glyph * g,int x,int y,int *size,int w,Category *c);
+void render_result(SDL_Renderer *renderer,Glyph * g,int x,int y,int w, int h, SDL_Color * back,Result *res, int first, int nulltime);   
+void render_category(SDL_Renderer *renderer,Glyph * g,int x,int y,int *size,int w,Category *c, int nulltime);
 #endif

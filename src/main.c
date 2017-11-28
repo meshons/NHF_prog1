@@ -65,7 +65,7 @@ int main(int argc, char **argv)
     int right_size;
     left_cats = R_load_cats(set.left_file, &left_size);
     right_cats = R_load_cats(set.right_file, &right_size);
-
+/*
     if (set.res_refreshrate != 0)
     {
         strcpy(resulter.filename, set.res_file);
@@ -88,7 +88,7 @@ int main(int argc, char **argv)
                 CSV_read(resfile, &list, result, set.charset);
             fclose(resfile);
         }
-    }
+    }*/
 
     if (set.start_refreshrate != 0)
     {
@@ -230,7 +230,7 @@ int main(int argc, char **argv)
                 left_cat = 0;
             Category *cl = R_category_find(list, left_cats + namesize * left_cat);
             //if (cl != NULL){
-            render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl);
+            render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl,set.nulltime);
             if (first_left == 0)
             {
                 if (fi < (float)~left_k)
@@ -254,7 +254,7 @@ int main(int argc, char **argv)
                 right_cat = 0;
             Category *cr = R_category_find(list, right_cats + namesize * right_cat);
             //if (cr != NULL){
-            render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, cr);
+            render_category(renderer, ttf_normal, width / 2 + 1, j, &right_k, width / 2 - 1, cr, set.nulltime);
             if (first_right == 0)
             {
                 if (fr < (float)~right_k)

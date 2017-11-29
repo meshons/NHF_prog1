@@ -224,6 +224,8 @@ Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
     int P_l=10;
     char Status[9] = "<Status>";
     int S_l = 8;
+    //char Organisation[15] = "<Organisation>";
+    //char Organisation_end[15] = "</Organisation>";
     bool find = false;
     bool result = false;
 
@@ -239,6 +241,13 @@ Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
 
     while (fgets(line, size, f) != NULL){
 
+        if(strncmp(line, ShortName, SN_l) == 0){
+            if(result){
+
+            }else{
+
+            }
+        }
 
 
         if(find){

@@ -1,3 +1,6 @@
+#ifndef fileh
+#define fileh 1
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
@@ -16,9 +19,6 @@
 #include "charset.h"
 #include "results.h"
 #include "log.h"
-
-#ifndef fileh
-#define fileh
 
 extern bool error;
 

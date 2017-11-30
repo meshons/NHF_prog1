@@ -1,0 +1,11 @@
+charset=windows-1252
+format=iof
+resultfile=oeiof.xml
+startfile=oerajt.csv
+leftfile=left.txt
+rightfile=right.txt
+res_refreshrate=10
+start_refreshrate=10
+leftspeed=90
+rightspeed=90
+nulltime=61200

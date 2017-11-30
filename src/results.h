@@ -1,3 +1,5 @@
+#ifndef resultsh
+#define resultsh 1
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,9 +8,6 @@
 #include <stdatomic.h>
 
 #include "charset.h"
-
-#ifndef resultsh
-#define resultsh 1
 
 #define namesize 50
 

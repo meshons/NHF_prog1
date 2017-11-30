@@ -1,6 +1,5 @@
 #include "file.h"
 
-// txt
 R_charset TXT_getcharset(FILE *f)
 {
     char line[30];
@@ -201,7 +200,6 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
     {
         error = true;
     }
-    //int i;
     char line[6 * (namesize + 1)];
     char ShortName[12] = "<ShortName>";
     int SN_l = 11;

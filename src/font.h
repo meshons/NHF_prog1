@@ -10,11 +10,10 @@ typedef struct Glyph{
     SDL_Texture * texture;
     SDL_Rect rect;
 }Glyph;
-typedef enum Align { LEFT, CENTER, RIGHT } Align;
+typedef enum Align { LEFT, RIGHT } Align;
 #endif
 
 unsigned short getGlyphId(int i);
 void loadGlyphs(Glyph *g,TTF_Font *font,SDL_Color color,SDL_Renderer *renderer);
 void destroyGlyphs(Glyph *glyphs);
-void text(unsigned short * uni,SDL_Renderer *renderer,Glyph * g,int x,int y, Align a);
 

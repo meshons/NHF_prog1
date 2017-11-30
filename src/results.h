@@ -17,10 +17,6 @@ typedef enum R_format {txt,xml,csv,undefined_format} R_format;
 typedef enum R_charset {ascii,utf8,uni,win1252,win1250,latin2,undefined_charset} R_charset;
 typedef enum R_list {result,start} R_list;
 
-typedef struct Time{
-    int h,m,s;
-}Time;
-
 typedef struct Result{
     atomic_short pos;
     atomic_ushort vorname[namesize],  surname[namesize];

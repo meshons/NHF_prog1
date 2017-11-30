@@ -50,12 +50,10 @@ Result *TXT_line(char *line, R_charset charset, R_list listtype)
             if (k >= namesize * multiplier)
             {
                 error = true;
-                //break;
             }
             if (check > 5)
             {
                 error = true;
-                //break;
             }
             switch (check)
             {
@@ -83,7 +81,6 @@ Result *TXT_line(char *line, R_charset charset, R_list listtype)
     }
     if (check != 5)
     {
-        //error
         error = true;
     }
 

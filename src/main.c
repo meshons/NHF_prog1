@@ -126,7 +126,7 @@ int main(int argc, char **argv)
 
     bool stop = false;
 
-    while (!quit)
+    while (!quit && !error)
     {
         left_cat = next_left;
         right_cat = next_right;

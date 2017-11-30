@@ -44,20 +44,3 @@ void destroyGlyphs(Glyph *glyphs){
     for(i=0;i<max_glyph;i++)
         SDL_DestroyTexture(glyphs[i].texture);
 }
-
-void text(unsigned short * uni,SDL_Renderer *renderer,Glyph * g,int x,int y, Align a){
-    SDL_Rect rect;
-    int i;
-    unsigned short ch;
-    if(a == LEFT){
-        rect.x = x;
-        rect.y = y;
-        for(i=0;uni[i] != 0;i++){
-            ch = getGlyphId(uni[i]);
-            rect.w = g[ch].rect.w;
-            rect.h = g[ch].rect.h;
-            SDL_RenderCopy(renderer,g[ch].texture,NULL,&rect);
-            rect.x += g[ch].rect.w;
-        }
-    }
-}

@@ -243,7 +243,7 @@ Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
 
         if(strncmp(line, ShortName, SN_l) == 0){
             if(result){
-
+                
             }else{
 
             }

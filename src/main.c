@@ -62,10 +62,13 @@ int main(int argc, char **argv)
                 TXT_read(resfile, &list, result);
             else if (set.format == csv)
                 CSV_read(resfile, &list, result, set.charset);
+            else if (set.format == xml)
+                IOF_read(resfile, &list, result, set.charset);
             fclose(resfile);
         }
     }
 
+/*
     if (set.start_refreshrate != 0)
     {
         strcpy(starter.filename, set.start_file);
@@ -89,7 +92,7 @@ int main(int argc, char **argv)
             fclose(startfile);
         }
     }
-
+*/
     Glyph ttf_normal[max_glyph];
     SDL_Color c_black = {0, 0, 0, 0};
 

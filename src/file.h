@@ -19,25 +19,25 @@
 
 extern bool error;
 
-struct thread_arg{
+struct thread_arg
+{
     char filename[namesize];
     R_list type;
-    Category ** list;
+    Category **list;
     int refreshrate;
     R_format format;
     R_charset charset;
 };
 
-void * readerthread(void *arg);
-
+void *readerthread(void *arg);
 
 R_charset TXT_getcharset(FILE *f);
-Result * TXT_line(char * line,R_charset charset, R_list listtype);
-void TXT_read(FILE * f,Category ** list, R_list listtype);
+Result *TXT_line(char *line, R_charset charset, R_list listtype);
+void TXT_read(FILE *f, Category **list, R_list listtype);
 
-Result * IOF_read(FILE *f,R_charset charset, R_list listtype);
+void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype);
 
-Result * CSV_line(char * line,R_charset charset,R_list listtype);
-void CSV_read(FILE *f, Category **list,R_list listtype, R_charset charset);
+Result *CSV_line(char *line, R_charset charset, R_list listtype);
+void CSV_read(FILE *f, Category **list, R_list listtype, R_charset charset);
 
 #endif

@@ -197,7 +197,7 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
 }
 
 //IOF
-Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
+void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
 {
     int size = 6 * (namesize + 1);
     if (f == NULL)
@@ -205,7 +205,6 @@ Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
         LOG_str("No result file");
         error = true;
     }
-    Result *r, *r_exist;
     int i;
     char line[6 * (namesize + 1)];
     char ShortName[12] = "<ShortName>";
@@ -216,12 +215,12 @@ Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
     int G_l = 7;
     char Name[7] = "<Name>";
     int N_l = 6;
-    char StartTime[12] = "<StartTime>"; 
+    char StartTime[12] = "<StartTime>";
     int ST_l = 11;
     char Time[7] = "<Time>";
-    int T_l=6;
+    int T_l = 6;
     char Position[11] = "<Position>";
-    int P_l=10;
+    int P_l = 10;
     char Status[9] = "<Status>";
     int S_l = 8;
     //char Organisation[15] = "<Organisation>";
@@ -236,31 +235,169 @@ Result *IOF_read(FILE *f, R_charset charset, R_list listtype)
     char vorname[namesize * 3] = {0};
     char club[namesize * 3] = {0};
     char ct[namesize] = {0};
+    char cstatus[namesize] = {0};
     int pos;
     int t, h, m, s;
 
-    while (fgets(line, size, f) != NULL){
-
-        if(strncmp(line, ShortName, SN_l) == 0){
-            if(result){
-                
-            }else{
-
+    while (fgets(line, size, f) != NULL)
+    {
+        int i;
+        if (strncmp(line, ShortName, SN_l) == 0)
+        {
+            if (result)
+            {
+                for (i = 0; (line[SN_l + i] != '<' && i < namesize - 1); i++)
+                    club[i] = line[SN_l + i];
+            }
+            else
+            {
+                for (i = 0; (line[SN_l + i] != '<' && i < namesize - 1); i++)
+                    category[i] = line[SN_l + i];
             }
         }
+        else if (strncmp(line, Family, F_l) == 0)
+        {
+            for (i = 0; (line[F_l + i] != '<' && i < namesize - 1); i++)
+                surname[i] = line[F_l + i];
+            result = true;
+        }
+        else if (strncmp(line, Given, G_l) == 0)
+        {
+            for (i = 0; (line[G_l + i] != '<' && i < namesize - 1); i++)
+                vorname[i] = line[G_l + i];
+        }
+        else if (listtype == result && strncmp(line, Time, T_l) == 0)
+        {
+            for (i = 0; (line[T_l + i] != '<' && line[T_l + i] != '.' && i < namesize - 1); i++)
+                ct[i] = line[T_l + i];
+        }
+        else if (listtype == start && strncmp(line, StartTime, ST_l) == 0)
+        {
+            bool T = false;
+            for (i = 0; (line[ST_l + i] != '<' && line[ST_l + i] != '.' && i < namesize - 1); i++)
+            {
+                if (T)
+                    ct[i] = line[ST_l + i];
+                if (line[ST_l + i] == 'T')
+                    T = true;
+            }
+        }
+        else if (strncmp(line, Position, P_l) == 0)
+        {
+            for (i = 0; (line[P_l + i] != '<' && i < namesize - 1); i++)
+                cpos[i] = line[P_l + i];
+        }
+        else if (strncmp(line, Status, S_l) == 0)
+        {
+            for (i = 0; (line[S_l + i] != '<' && i < namesize - 1); i++)
+                cstatus[i] = line[S_l + i];
+            find = true;
+            result = false;
+        }
 
+        if (find)
+        {
+            Result *rnew = R_new();
+            if (rnew == NULL)
+            {
+                error = true;
+            }
+            if (sscanf(ct, "%d:%d:%d", &h, &m, &s) == 3)
+                t = h * 60 * 60 + m * 60 + s;
+            else if (sscanf(ct, "%d:%d", &m, &s) == 2)
+                t = m * 60 + s;
+            else
+                t = -1;
 
-        if(find){
+            if (listtype == start)
+            {
+                rnew->pos = 996;
+                rnew->starttime = (atomic_int)t;
+            }
+            else if (listtype == result)
+            {
+                rnew->t = (atomic_int)t;
+                if (cpos[0] == 0 && cstatus[0] != 'O')
+                    pos = 998;
+                else if (cpos[0] == 0 && cstatus[0] == 'O')
+                    pos = 999;
+                else
+                    sscanf(cpos, "%d", &pos);
+                if (cpos[0] == 'V' && cpos[1] == 'k')
+                    pos = 997;
+                rnew->pos = (atomic_int)pos;
+            }
 
+            char_2_char_a(category, rnew->category);
+            if (charset == latin2)
+            {
+                latin2_2_unicode_a((unsigned char *)surname, rnew->surname);
+                latin2_2_unicode_a((unsigned char *)vorname, rnew->vorname);
+                latin2_2_unicode_a((unsigned char *)club, rnew->club);
+            }
+            else if (charset == win1250)
+            {
+                win1250_2_unicode_a((unsigned char *)surname, rnew->surname);
+                win1250_2_unicode_a((unsigned char *)vorname, rnew->vorname);
+                win1250_2_unicode_a((unsigned char *)club, rnew->club);
+            }
+            else if (charset == utf8)
+            {
+                utf8_2_unicode_a(surname, rnew->surname);
+                utf8_2_unicode_a(vorname, rnew->vorname);
+                utf8_2_unicode_a(club, rnew->club);
+            }
+            else if (charset == win1252)
+            {
+                win1252_2_unicode_a((unsigned char *)surname, rnew->surname);
+                win1252_2_unicode_a((unsigned char *)vorname, rnew->vorname);
+                win1252_2_unicode_a((unsigned char *)club, rnew->club);
+            }
+            else
+            {
+                ascii_2_unicode_a(surname, rnew->surname);
+                ascii_2_unicode_a(vorname, rnew->vorname);
+                ascii_2_unicode_a(club, rnew->club);
+            }
+
+            Result *r_exist = R_result_search(*(list), rnew, 0);
+            if (r_exist != NULL)
+            {
+                if (listtype == start)
+                {
+                    r_exist->starttime = rnew->starttime;
+                }
+                else if (listtype == result)
+                {
+                    r_exist->pos = rnew->pos;
+                    r_exist->t = rnew->t;
+                }
+                r_exist->updated = time(0);
+                free(rnew);
+            }
+            else
+            {
+                Category *c = NULL;
+                c = R_category_find_a(*list, rnew->category);
+                if (c == NULL)
+                {
+                    c = R_category_new(list);
+                    for (int i = 0; rnew->category[i] != 0; i++)
+                        c->name[i] = rnew->category[i];
+                }
+                rnew->updated = time(0);
+                R_result_add(c, rnew, result);
+            }
 
             memset(cpos, 0, namesize);
-            memset(category,0,namesize);
-            memset(surname,0,namesize*3);
-            memset(vorname,0,namesize*3);
-            memset(club,0,namesize*3);
-            memset(ct,0,namesize);
+            memset(category, 0, namesize);
+            memset(surname, 0, namesize * 3);
+            memset(vorname, 0, namesize * 3);
+            memset(club, 0, namesize * 3);
+            memset(ct, 0, namesize);
+            memset(cstatus, 0, namesize);
             pos = 0;
-            t=h=m=s=0;
+            t = h = m = s = 0;
             find = false;
         }
     }
@@ -429,10 +566,6 @@ void CSV_read(FILE *f, Category **list, R_list listtype, R_charset charset)
     while (fgets(line, size, f) != NULL)
     {
         r = CSV_line(line, charset, listtype);
-        if (r == NULL)
-        {
-            printf("valami");
-        }
         r_exist = R_result_search(*(list), r, 0);
         if (r_exist != NULL)
         {
@@ -485,6 +618,10 @@ void *readerthread(void *arg)
             else if (set->format == csv)
             {
                 CSV_read(fp, set->list, set->type, set->charset);
+            }
+            else if (set->format == xml)
+            {
+                IOF_read(fp, set->list, set->type, set->charset);
             }
             fclose(fp);
         }

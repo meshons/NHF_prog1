@@ -5,16 +5,13 @@
 #include <stdbool.h>
 #include <string.h>
 #include <time.h>
-#include <stdatomic.h>
 #include <pthread.h>
-#include <errno.h>
 
 #ifdef _WIN32
 #include <Windows.h>
 #else
 #include <unistd.h>
 #endif
-
 
 #include "charset.h"
 #include "results.h"

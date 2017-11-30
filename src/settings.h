@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 #include "results.h"
 #include "log.h"
@@ -21,7 +20,6 @@ typedef struct Setting{
     int nulltime;
 }Setting;
 
-extern unsigned char loglevel;
 extern bool error;
 
 void Settings_default(Setting *s);

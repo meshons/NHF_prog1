@@ -1,19 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include <pthread.h>
 #include <math.h>
 
-#ifdef _WIN32
-#include <Windows.h>
-#else
-#include <unistd.h>
-#endif
-
 #include "text.h"
-#include "charset.h"
-#include "results.h"
 #include "log.h"
 #include "settings.h"
 #include "file.h"

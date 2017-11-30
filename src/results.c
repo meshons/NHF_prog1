@@ -6,7 +6,6 @@ Result *R_result_new(Category *list, R_list listtype)
     memset(rnew, 0, sizeof(Result));
     if (rnew == NULL)
     {
-        LOG_str("No result memory allocated");
         error = true;
         return NULL;
     }
@@ -83,7 +82,6 @@ Category *R_category_new(Category **list)
     memset(cnew, 0, sizeof(Category));
     if (cnew == NULL)
     {
-        LOG_str("No Category memory allocated");
         error = true;
         return NULL;
     }

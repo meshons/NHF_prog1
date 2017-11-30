@@ -5,7 +5,6 @@
 #include <math.h>
 
 #include "text.h"
-#include "log.h"
 #include "settings.h"
 #include "file.h"
 
@@ -13,8 +12,6 @@ bool error = false;
 
 int main(int argc, char **argv)
 {
-    if (!LOG_init())
-        return 1;
 
     Setting set;
     Settings_load(&set);
@@ -68,7 +65,7 @@ int main(int argc, char **argv)
         }
     }
 
-/*
+    /*
     if (set.start_refreshrate != 0)
     {
         strcpy(starter.filename, set.start_file);
@@ -96,14 +93,9 @@ int main(int argc, char **argv)
     Glyph ttf_normal[max_glyph];
     SDL_Color c_black = {0, 0, 0, 0};
 
-    if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO) != 0)
-        LOG_cstr(SDL_GetError());
+    SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO) != 0;
     window = SDL_CreateWindow("NHF", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_SHOWN);
-    if (window == NULL)
-        LOG_str("ablak");
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (renderer == NULL)
-        LOG_str("renderer");
     SDL_GetWindowSize(window, &width, &height);
     TTF_Init();
     SDL_DisableScreenSaver();
@@ -131,7 +123,7 @@ int main(int argc, char **argv)
     int right_cat = 0;
     int next_right = 0;
 
-    bool stop=false;
+    bool stop = false;
 
     while (!quit)
     {
@@ -156,24 +148,30 @@ int main(int argc, char **argv)
                     break;
                 case SDLK_d:
                 case SDLK_DOWN:
-                    if(stop)stop=false;
-                    else stop = true;
+                    if (stop)
+                        stop = false;
+                    else
+                        stop = true;
                     break;
                 case SDLK_q:
-                    set.leftspeed+=5;
-                    if(set.leftspeed>200)set.leftspeed=200;
+                    set.leftspeed += 5;
+                    if (set.leftspeed > 200)
+                        set.leftspeed = 200;
                     break;
                 case SDLK_a:
-                    set.leftspeed-=5;
-                    if(set.leftspeed<0)set.leftspeed=0;
+                    set.leftspeed -= 5;
+                    if (set.leftspeed < 0)
+                        set.leftspeed = 0;
                     break;
                 case SDLK_w:
-                    set.rightspeed+=5;
-                    if(set.rightspeed>200)set.rightspeed=200;
+                    set.rightspeed += 5;
+                    if (set.rightspeed > 200)
+                        set.rightspeed = 200;
                     break;
                 case SDLK_s:
-                    set.rightspeed-=5;
-                    if(set.rightspeed<0)set.rightspeed=0;
+                    set.rightspeed -= 5;
+                    if (set.rightspeed < 0)
+                        set.rightspeed = 0;
                     break;
                 case SDLK_r:
                     left_cat = 0;
@@ -210,13 +208,13 @@ int main(int argc, char **argv)
         int first_left = 0;
         int first_right = 0;
 
-        int afas=0;
-        while (left_k <= height + first_left && afas++<100)
+        int afas = 0;
+        while (left_k <= height + first_left && afas++ < 100)
         {
             if (left_cat >= left_size)
                 left_cat = 0;
             Category *cl = R_category_find(list, left_cats + namesize * left_cat);
-            render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl,set.nulltime);
+            render_category(renderer, ttf_normal, 0, i, &left_k, width / 2 - 1, cl, set.nulltime);
             if (first_left == 0)
             {
                 if (fi < (float)~left_k)
@@ -228,8 +226,8 @@ int main(int argc, char **argv)
             }
             left_cat++;
         }
-        afas=0;
-        while (right_k <= height + first_right && afas++<100)
+        afas = 0;
+        while (right_k <= height + first_right && afas++ < 100)
         {
             if (right_cat >= right_size)
                 right_cat = 0;
@@ -250,12 +248,12 @@ int main(int argc, char **argv)
         SDL_RenderPresent(renderer);
 
         deltaTime = (elapsedTime - lastFrameTimeElapsed) / 1000.0f;
-        if(!stop){
+        if (!stop)
+        {
             fi -= (float)set.leftspeed * deltaTime;
             fr -= (float)set.rightspeed * deltaTime;
         }
         lastFrameTimeElapsed = elapsedTime;
-
     }
 
     destroyGlyphs(ttf_normal);
@@ -278,7 +276,6 @@ int main(int argc, char **argv)
 
     R_category_deleteall(list);
     Settings_save(&set);
-    LOG_close();
 
     return EXIT_SUCCESS;
 }

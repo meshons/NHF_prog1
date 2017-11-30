@@ -6,7 +6,6 @@
 #include <stdatomic.h>
 
 #include "charset.h"
-#include "log.h"
 
 #ifndef resultsh
 #define resultsh 1

@@ -15,7 +15,6 @@
 
 #include "charset.h"
 #include "results.h"
-#include "log.h"
 
 extern bool error;
 

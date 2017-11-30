@@ -6,7 +6,6 @@ R_charset TXT_getcharset(FILE *f)
     char line[30];
     if (fgets(line, 30, f) == NULL)
     {
-        LOG_str("No line");
         error = true;
     }
     if (strcmp(line, "ascii\n") == 0)
@@ -154,11 +153,9 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
     int size = 6 * (namesize + 1);
     if (f == NULL)
     {
-        LOG_str("No result file");
         error = true;
     }
     R_charset charset = TXT_getcharset(f);
-    LOG_str(R_charset_ascii(charset));
     Result *r, *r_exist;
     int i;
     char line[6 * (namesize + 1)];
@@ -202,7 +199,6 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
     int size = 6 * (namesize + 1);
     if (f == NULL)
     {
-        LOG_str("No result file");
         error = true;
     }
     int i;
@@ -556,7 +552,6 @@ void CSV_read(FILE *f, Category **list, R_list listtype, R_charset charset)
     const int size = 2000;
     if (f == NULL)
     {
-        LOG_str("No result file");
         error = true;
     }
     Result *r = NULL, *r_exist = NULL;

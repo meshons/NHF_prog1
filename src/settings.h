@@ -2,7 +2,6 @@
 #include <string.h>
 
 #include "results.h"
-#include "log.h"
 
 #ifndef settingsh
 #define settingsh 1

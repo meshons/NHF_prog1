@@ -1,6 +1,6 @@
 ODIR=obj
 
-_OBJ = charset.o text.o settings.o results.o file.o log.o main.o
+_OBJ = charset.o text.o settings.o results.o file.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 release: clean nhf

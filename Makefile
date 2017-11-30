@@ -7,7 +7,7 @@ release: clean nhf
 linux: cleanlinux nhflinux
 
 obj/%.o: src/%.c
-	gcc -c -o $@ $< -std=c11 -g
+	gcc -c -o $@ $< -std=c11 -g -Wall
 
 nhflinux: $(OBJ)
 	gcc -o bin/nhf.exe $^ -Wall `sdl2-config --cflags --libs` -lSDL2_ttf -pthread -std=c11 -lm -g

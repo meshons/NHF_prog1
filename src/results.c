@@ -106,6 +106,7 @@ Category *R_category_new(Category **list)
 Category *R_category_find(Category *list, char *name)
 {
     Category *c;
+    if(list == NULL) return NULL;
     for (c = list; c->next != NULL; c = c->next)
         if (strcmp(name, c->name) == 0)
             return c;

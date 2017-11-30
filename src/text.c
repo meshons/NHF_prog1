@@ -176,19 +176,7 @@ void render_result(SDL_Renderer *renderer, Glyph *g, int x, int y, int w, int h,
     {
         dtime = res->t;
     }
-    else if (res->starttime != 0)
-    {
-        time_t now;
-        struct tm *nowinfo;
-        time(&now);
-        nowinfo = localtime(&now);
-        int nowint = nowinfo->tm_hour * 60 * 60 + nowinfo->tm_min * 60 + nowinfo->tm_sec;
-        dtime = res->starttime;
-        /*if (dtime >= 0)
-            ctime[l++] = '+';
-        else
-            ctime[l++] = '-';*/
-    }
+
     int dmin = dtime / 60;
     int dsec = dtime % 60;
     int k = 5;

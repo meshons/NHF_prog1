@@ -65,7 +65,7 @@ int main(int argc, char **argv)
         }
     }
 
-    /*
+    
     if (set.start_refreshrate != 0)
     {
         strcpy(starter.filename, set.start_file);
@@ -86,14 +86,16 @@ int main(int argc, char **argv)
                 TXT_read(startfile, &list, start);
             else if (set.format == csv)
                 CSV_read(startfile, &list, start, set.charset);
+            else if (set.format == xml)
+                IOF_read(startfile, &list, result, set.charset);
             fclose(startfile);
         }
     }
-*/
+
     Glyph ttf_normal[max_glyph];
     SDL_Color c_black = {0, 0, 0, 0};
 
-    SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO) != 0;
+    SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO);
     window = SDL_CreateWindow("NHF", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_GetWindowSize(window, &width, &height);
@@ -107,7 +109,6 @@ int main(int argc, char **argv)
 
     quit = 0;
 
-    clock_t timestart = clock();
     int i = 0;
     int j = 0;
     float fi = height / 4;

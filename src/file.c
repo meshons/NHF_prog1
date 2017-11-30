@@ -201,7 +201,7 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
     {
         error = true;
     }
-    int i;
+    //int i;
     char line[6 * (namesize + 1)];
     char ShortName[12] = "<ShortName>";
     int SN_l = 11;
@@ -209,8 +209,8 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
     int F_l = 8;
     char Given[8] = "<Given>";
     int G_l = 7;
-    char Name[7] = "<Name>";
-    int N_l = 6;
+    //char Name[7] = "<Name>";
+    //int N_l = 6;
     char StartTime[12] = "<StartTime>";
     int ST_l = 11;
     char Time[7] = "<Time>";
@@ -224,7 +224,6 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
     bool find = false;
     bool result = false;
 
-    int multiplier = 1;
     char cpos[namesize] = {0};
     char category[namesize] = {0};
     char surname[namesize * 3] = {0};
@@ -405,9 +404,6 @@ Result *CSV_line(char *line, R_charset charset, R_list listtype)
 {
     int i = 0, j = 0, k = 0;
 
-    int multiplier = 1;
-    if (charset == utf8)
-        multiplier = 3;
     char cpos[namesize] = {0};
     char category[namesize] = {0};
     char surname[namesize * 3] = {0};
@@ -598,8 +594,7 @@ void *readerthread(void *arg)
     struct thread_arg *set = arg;
     FILE *fp;
     clock_t timestart;
-    clock_t timeend;
-    bool first = false;
+    //bool first = false;
     while (true)
     {
         timestart = clock();

@@ -1,9 +1,8 @@
-
 <?xml version="1.0" encoding="windows-1252"?>
  <ResultList xmlns="http://www.orienteering.org/datastandard/3.0"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  iofVersion="3.0"
- createTime="2017-11-17T11:43:33.554"
+ createTime="2017-12-01T10:25:24.258"
  creator="SportSoftware OE2010 V.11.0">
 <Event>
 <Name>Demo - Bundesranglistenlauf Mitterteich 6.6.2004</Name>
@@ -246,7 +245,7 @@
 <Person sex="F">
 <Id>00748</Id>
 <Name>
-<Family>Trï¿½ï¿½e</Family>
+<Family>Tröße</Family>
 <Given>Christiane</Given>
 </Name>
 <BirthDate>1981-01-01</BirthDate>
@@ -314,8 +313,8 @@
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>29</BibNumber>
@@ -338,7 +337,7 @@
 <Person sex="F">
 <Id>00834</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Insa</Given>
 </Name>
 <BirthDate>1982-01-01</BirthDate>
@@ -498,8 +497,8 @@
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>9</BibNumber>
@@ -586,8 +585,8 @@
 </Person>
 <Organisation>
 <Id>15</Id>
-<Name>ESV Lok Berlin-Schï¿½neweide</Name>
-<ShortName>ESV Lok Berlin-Schï¿½neweide</ShortName>
+<Name>ESV Lok Berlin-Schöneweide</Name>
+<ShortName>ESV Lok Berlin-Schöneweide</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>5</BibNumber>
@@ -842,7 +841,7 @@
 <Id>00412</Id>
 <Name>
 <Family>Meyer</Family>
-<Given>Jï¿½rg</Given>
+<Given>Jörg</Given>
 </Name>
 <BirthDate>1983-01-01</BirthDate>
 </Person>
@@ -872,7 +871,7 @@
 <Person sex="M">
 <Id>00405</Id>
 <Name>
-<Family>Lï¿½ckmann</Family>
+<Family>Lückmann</Family>
 <Given>Andreas</Given>
 </Name>
 <BirthDate>1966-01-01</BirthDate>
@@ -903,7 +902,7 @@
 <Person sex="M">
 <Id>01832</Id>
 <Name>
-<Family>Hanï¿½ke</Family>
+<Family>Hanßke</Family>
 <Given>Bengt</Given>
 </Name>
 <BirthDate>1974-01-01</BirthDate>
@@ -933,7 +932,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Zschï¿½kel</Family>
+<Family>Zschäkel</Family>
 <Given>Raik</Given>
 </Name>
 <BirthDate>1967-01-01</BirthDate>
@@ -963,15 +962,15 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Kï¿½rner</Family>
+<Family>Körner</Family>
 <Given>Ralph</Given>
 </Name>
 <BirthDate>1980-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>124</BibNumber>
@@ -1025,7 +1024,7 @@
 <Person sex="M">
 <Id>01401</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Denis</Given>
 </Name>
 <BirthDate>1974-01-01</BirthDate>
@@ -1248,8 +1247,8 @@
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>52</BibNumber>
@@ -1348,7 +1347,7 @@
 <Person sex="M">
 <Id>01234</Id>
 <Name>
-<Family>Hï¿½rtelt</Family>
+<Family>Härtelt</Family>
 <Given>Daniel</Given>
 </Name>
 <BirthDate>1981-01-01</BirthDate>
@@ -1620,7 +1619,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Dï¿½hnn</Family>
+<Family>Dähnn</Family>
 <Given>Kjell</Given>
 </Name>
 <BirthDate>1996-01-01</BirthDate>
@@ -1650,7 +1649,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Finkenstï¿½dt</Family>
+<Family>Finkenstädt</Family>
 <Given>Malte</Given>
 </Name>
 <BirthDate>1994-01-01</BirthDate>
@@ -1740,7 +1739,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Wï¿½ldecke</Family>
+<Family>Wöldecke</Family>
 <Given>Tobias</Given>
 </Name>
 <BirthDate>1993-01-01</BirthDate>
@@ -1843,7 +1842,7 @@
 <PersonResult>
 <Person sex="F">
 <Name>
-<Family>Lï¿½sch</Family>
+<Family>Lösch</Family>
 <Given>Susen</Given>
 </Name>
 <BirthDate>1993-01-01</BirthDate>
@@ -1935,7 +1934,7 @@
 <Person sex="F">
 <Id>02307</Id>
 <Name>
-<Family>Finkenstï¿½dt</Family>
+<Family>Finkenstädt</Family>
 <Given>Laura</Given>
 </Name>
 <BirthDate>1992-01-01</BirthDate>
@@ -2597,8 +2596,8 @@
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>129</BibNumber>
@@ -2714,7 +2713,7 @@
 <Person sex="F">
 <Id>00309</Id>
 <Name>
-<Family>Meiï¿½ner</Family>
+<Family>Meißner</Family>
 <Given>Britta</Given>
 </Name>
 <BirthDate>1990-01-01</BirthDate>
@@ -2807,15 +2806,15 @@
 <Person sex="F">
 <Id>01653</Id>
 <Name>
-<Family>Gï¿½bel</Family>
+<Family>Göbel</Family>
 <Given>Claudia</Given>
 </Name>
 <BirthDate>1990-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>136</BibNumber>
@@ -2930,7 +2929,7 @@
 <Person sex="F">
 <Id>01963</Id>
 <Name>
-<Family>Krï¿½mer</Family>
+<Family>Krämer</Family>
 <Given>Anna</Given>
 </Name>
 <BirthDate>1990-01-01</BirthDate>
@@ -3097,7 +3096,7 @@
 <Person sex="M">
 <Id>01972</Id>
 <Name>
-<Family>Krï¿½mer</Family>
+<Family>Krämer</Family>
 <Given>Jakob</Given>
 </Name>
 <BirthDate>1991-01-01</BirthDate>
@@ -3490,7 +3489,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Nï¿½gele</Family>
+<Family>Nägele</Family>
 <Given>Philipp</Given>
 </Name>
 <BirthDate>1990-01-01</BirthDate>
@@ -3552,7 +3551,7 @@
 <Person sex="M">
 <Id>01620</Id>
 <Name>
-<Family>Wï¿½ldecke</Family>
+<Family>Wöldecke</Family>
 <Given>Christoph</Given>
 </Name>
 <BirthDate>1990-01-01</BirthDate>
@@ -3703,7 +3702,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Gï¿½ricke</Family>
+<Family>Göricke</Family>
 <Given>Marvin</Given>
 </Name>
 <BirthDate>1991-01-01</BirthDate>
@@ -3877,8 +3876,8 @@
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>193</BibNumber>
@@ -3932,7 +3931,7 @@
 <Person sex="F">
 <Id>01550</Id>
 <Name>
-<Family>Bï¿½hm</Family>
+<Family>Böhm</Family>
 <Given>Marie-Christine</Given>
 </Name>
 <BirthDate>1989-01-01</BirthDate>
@@ -4032,8 +4031,8 @@
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>188</BibNumber>
@@ -4056,7 +4055,7 @@
 <Person sex="F">
 <Id>00122</Id>
 <Name>
-<Family>Jï¿½nich</Family>
+<Family>Jänich</Family>
 <Given>Isabell</Given>
 </Name>
 <BirthDate>1988-01-01</BirthDate>
@@ -4303,8 +4302,8 @@
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>663</BibNumber>
@@ -4404,7 +4403,7 @@
 <Person sex="F">
 <Id>00272</Id>
 <Name>
-<Family>Bï¿½hme</Family>
+<Family>Böhme</Family>
 <Given>Marie</Given>
 </Name>
 <BirthDate>1989-01-01</BirthDate>
@@ -4449,7 +4448,7 @@
 <Person sex="M">
 <Id>00420</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Philipp</Given>
 </Name>
 <BirthDate>1988-01-01</BirthDate>
@@ -4480,7 +4479,7 @@
 <Person sex="M">
 <Id>01475</Id>
 <Name>
-<Family>Lï¿½tzkendorf</Family>
+<Family>Lützkendorf</Family>
 <Given>Paul</Given>
 </Name>
 <BirthDate>1989-01-01</BirthDate>
@@ -4728,7 +4727,7 @@
 <Person sex="M">
 <Id>01970</Id>
 <Name>
-<Family>Rï¿½hnert</Family>
+<Family>Röhnert</Family>
 <Given>Max</Given>
 </Name>
 <BirthDate>1989-01-01</BirthDate>
@@ -4790,15 +4789,15 @@
 <Person sex="M">
 <Id>00640</Id>
 <Name>
-<Family>Gï¿½bel</Family>
+<Family>Göbel</Family>
 <Given>Falk</Given>
 </Name>
 <BirthDate>1988-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>233</BibNumber>
@@ -5253,7 +5252,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Dï¿½rrschuck</Family>
+<Family>Dörrschuck</Family>
 <Given>Christian</Given>
 </Name>
 </Person>
@@ -5560,15 +5559,15 @@
 <Person sex="M">
 <Id>00643</Id>
 <Name>
-<Family>Hï¿½bschmann</Family>
+<Family>Hübschmann</Family>
 <Given>Ralf</Given>
 </Name>
 <BirthDate>1989-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>200</BibNumber>
@@ -5898,7 +5897,7 @@
 <Person sex="F">
 <Id>01894</Id>
 <Name>
-<Family>Groï¿½e</Family>
+<Family>Große</Family>
 <Given>Ulrike</Given>
 </Name>
 <BirthDate>1986-01-01</BirthDate>
@@ -5967,8 +5966,8 @@
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>245</BibNumber>
@@ -6218,8 +6217,8 @@
 <Person sex="M">
 <Id>00770</Id>
 <Name>
-<Family>Lï¿½sch</Family>
-<Given>Sï¿½ren</Given>
+<Family>Lösch</Family>
+<Given>Sören</Given>
 </Name>
 <BirthDate>1987-01-01</BirthDate>
 </Person>
@@ -6342,7 +6341,7 @@
 <Person sex="M">
 <Id>00442</Id>
 <Name>
-<Family>Gï¿½bor</Family>
+<Family>Gábor</Family>
 <Given>Michael</Given>
 </Name>
 <BirthDate>1987-01-01</BirthDate>
@@ -6566,8 +6565,8 @@
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>260</BibNumber>
@@ -6590,7 +6589,7 @@
 <Person sex="M">
 <Id>01800</Id>
 <Name>
-<Family>Hï¿½rnig</Family>
+<Family>Hörnig</Family>
 <Given>Sebastian</Given>
 </Name>
 <BirthDate>1987-01-01</BirthDate>
@@ -6729,7 +6728,7 @@
 <Person sex="M">
 <Id>00759</Id>
 <Name>
-<Family>Muï¿½ï¿½ï¿½oï¿½</Family>
+<Family>Muúóüoá</Family>
 <Given>Christian</Given>
 </Name>
 <BirthDate>1987-01-01</BirthDate>
@@ -6805,7 +6804,7 @@
 <Person sex="F">
 <Id>00842</Id>
 <Name>
-<Family>Schrï¿½ter</Family>
+<Family>Schröter</Family>
 <Given>Myrea</Given>
 </Name>
 <BirthDate>1984-01-01</BirthDate>
@@ -6985,7 +6984,7 @@
 <Person sex="F">
 <Id>00835</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Kirsten</Given>
 </Name>
 <BirthDate>1984-01-01</BirthDate>
@@ -7154,8 +7153,8 @@
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>300</BibNumber>
@@ -7364,7 +7363,7 @@
 <Person sex="M">
 <Id>00306</Id>
 <Name>
-<Family>Hï¿½fer</Family>
+<Family>Höfer</Family>
 <Given>Hannes</Given>
 </Name>
 <BirthDate>1985-01-01</BirthDate>
@@ -7655,7 +7654,7 @@
 <Person sex="M">
 <Id>00751</Id>
 <Name>
-<Family>Trï¿½ï¿½e</Family>
+<Family>Tröße</Family>
 <Given>Thomas</Given>
 </Name>
 <BirthDate>1984-01-01</BirthDate>
@@ -7800,8 +7799,8 @@
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>37</BibNumber>
@@ -7917,7 +7916,7 @@
 <Person sex="F">
 <Id>00747</Id>
 <Name>
-<Family>Trï¿½ï¿½e</Family>
+<Family>Tröße</Family>
 <Given>Andrea</Given>
 </Name>
 <BirthDate>1978-01-01</BirthDate>
@@ -8140,8 +8139,8 @@
 </Person>
 <Organisation>
 <Id>88</Id>
-<Name>Vorwï¿½rts Leipzig</Name>
-<ShortName>Vorwï¿½rts Leipzig</ShortName>
+<Name>Vorwärts Leipzig</Name>
+<ShortName>Vorwärts Leipzig</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>690</BibNumber>
@@ -8324,8 +8323,8 @@
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>634</BibNumber>
@@ -8427,7 +8426,7 @@
 <Person sex="F">
 <Id>00383</Id>
 <Name>
-<Family>Junghanï¿½</Family>
+<Family>Junghanß</Family>
 <Given>Diana</Given>
 </Name>
 <BirthDate>1970-01-01</BirthDate>
@@ -8557,7 +8556,7 @@
 <Person sex="M">
 <Id>01246</Id>
 <Name>
-<Family>Krï¿½ger</Family>
+<Family>Krüger</Family>
 <Given>Robert</Given>
 </Name>
 <BirthDate>1983-01-01</BirthDate>
@@ -8656,8 +8655,8 @@
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>80</BibNumber>
@@ -8773,7 +8772,7 @@
 <Person sex="M">
 <Id>01137</Id>
 <Name>
-<Family>Thï¿½ne</Family>
+<Family>Thöne</Family>
 <Given>Marc-Kevin</Given>
 </Name>
 <BirthDate>1981-01-01</BirthDate>
@@ -8866,7 +8865,7 @@
 <Person sex="M">
 <Id>01210</Id>
 <Name>
-<Family>Plï¿½tz</Family>
+<Family>Plötz</Family>
 <Given>Andre</Given>
 </Name>
 <BirthDate>1973-01-01</BirthDate>
@@ -8928,7 +8927,7 @@
 <Person sex="M">
 <Id>01235</Id>
 <Name>
-<Family>Hï¿½rtelt</Family>
+<Family>Härtelt</Family>
 <Given>Fred</Given>
 </Name>
 <BirthDate>1980-01-01</BirthDate>
@@ -8997,8 +8996,8 @@
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>298</BibNumber>
@@ -9145,7 +9144,7 @@
 <Person sex="M">
 <Id>00532</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Jan</Given>
 </Name>
 <BirthDate>1976-01-01</BirthDate>
@@ -9245,8 +9244,8 @@
 </Person>
 <Organisation>
 <Id>88</Id>
-<Name>Vorwï¿½rts Leipzig</Name>
-<ShortName>Vorwï¿½rts Leipzig</ShortName>
+<Name>Vorwärts Leipzig</Name>
+<ShortName>Vorwärts Leipzig</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>691</BibNumber>
@@ -9453,15 +9452,15 @@
 <Person sex="M">
 <Id>01089</Id>
 <Name>
-<Family>Heï¿½</Family>
+<Family>Heß</Family>
 <Given>Alexander</Given>
 </Name>
 <BirthDate>1980-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>105</Id>
-<Name>SV Mï¿½rlenbach</Name>
-<ShortName>SV Mï¿½rlenbach</ShortName>
+<Name>SV Mörlenbach</Name>
+<ShortName>SV Mörlenbach</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>73</BibNumber>
@@ -9607,7 +9606,7 @@
 <Person sex="M">
 <Name>
 <Family>Kleiner</Family>
-<Given>Bjï¿½rn</Given>
+<Given>Björn</Given>
 </Name>
 <BirthDate>1981-01-01</BirthDate>
 </Person>
@@ -9673,8 +9672,8 @@
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>717</BibNumber>
@@ -9720,7 +9719,7 @@
 <Person sex="M">
 <Id>00186</Id>
 <Name>
-<Family>Roï¿½negger</Family>
+<Family>Roßnegger</Family>
 <Given>Christian</Given>
 </Name>
 <BirthDate>1972-01-01</BirthDate>
@@ -9773,7 +9772,7 @@
 <Person sex="M">
 <Id>02077</Id>
 <Name>
-<Family>Rï¿½del</Family>
+<Family>Rödel</Family>
 <Given>Michael</Given>
 </Name>
 <BirthDate>1978-01-01</BirthDate>
@@ -9883,8 +9882,8 @@
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>34</BibNumber>
@@ -9907,7 +9906,7 @@
 <Person sex="F">
 <Id>01467</Id>
 <Name>
-<Family>Hï¿½lzer</Family>
+<Family>Hölzer</Family>
 <Given>Katrin</Given>
 </Name>
 <BirthDate>1980-01-01</BirthDate>
@@ -9968,7 +9967,7 @@
 <PersonResult>
 <Person sex="F">
 <Name>
-<Family>Lï¿½hning</Family>
+<Family>Löhning</Family>
 <Given>Susanne</Given>
 </Name>
 <BirthDate>1978-01-01</BirthDate>
@@ -10060,7 +10059,7 @@
 <Person sex="F">
 <Id>01249</Id>
 <Name>
-<Family>Lï¿½winger</Family>
+<Family>Löwinger</Family>
 <Given>Maria</Given>
 </Name>
 <BirthDate>1981-01-01</BirthDate>
@@ -10179,7 +10178,7 @@
 <Person sex="F">
 <Id>01402</Id>
 <Name>
-<Family>Schlï¿½sser</Family>
+<Family>Schlösser</Family>
 <Given>Beate</Given>
 </Name>
 <BirthDate>1978-01-01</BirthDate>
@@ -10286,7 +10285,7 @@
 <Person sex="M">
 <Id>00837</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Markus</Given>
 </Name>
 <BirthDate>1979-01-01</BirthDate>
@@ -10317,15 +10316,15 @@
 <Person sex="M">
 <Id>00046</Id>
 <Name>
-<Family>Bï¿½ï¿½ler</Family>
+<Family>Bäßler</Family>
 <Given>Steffen</Given>
 </Name>
 <BirthDate>1971-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>57</BibNumber>
@@ -10347,7 +10346,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Tï¿½pfer</Family>
+<Family>Töpfer</Family>
 <Given>Christian</Given>
 </Name>
 <BirthDate>1979-01-01</BirthDate>
@@ -10471,7 +10470,7 @@
 <Person sex="M">
 <Id>01212</Id>
 <Name>
-<Family>Schï¿½tze</Family>
+<Family>Schütze</Family>
 <Given>Mirko</Given>
 </Name>
 <BirthDate>1972-01-01</BirthDate>
@@ -10534,14 +10533,14 @@
 <Id>00053</Id>
 <Name>
 <Family>Kern</Family>
-<Given>Andrï¿½</Given>
+<Given>André</Given>
 </Name>
 <BirthDate>1973-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>99</BibNumber>
@@ -10688,7 +10687,7 @@
 <Id>01382</Id>
 <Name>
 <Family>Jankowski</Family>
-<Given>Jï¿½rgen</Given>
+<Given>Jürgen</Given>
 </Name>
 <BirthDate>1952-01-01</BirthDate>
 </Person>
@@ -10818,8 +10817,8 @@
 </Person>
 <Organisation>
 <Id>105</Id>
-<Name>SV Mï¿½rlenbach</Name>
-<ShortName>SV Mï¿½rlenbach</ShortName>
+<Name>SV Mörlenbach</Name>
+<ShortName>SV Mörlenbach</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>101</BibNumber>
@@ -10843,7 +10842,7 @@
 <Id>01296</Id>
 <Name>
 <Family>Hofmann</Family>
-<Given>Gï¿½tz</Given>
+<Given>Götz</Given>
 </Name>
 <BirthDate>1976-01-01</BirthDate>
 </Person>
@@ -10873,7 +10872,7 @@
 <Id>01385</Id>
 <Name>
 <Family>Risch</Family>
-<Given>Bjï¿½rn</Given>
+<Given>Björn</Given>
 </Name>
 <BirthDate>1975-01-01</BirthDate>
 </Person>
@@ -10902,7 +10901,7 @@
 <Person sex="M">
 <Id>00523</Id>
 <Name>
-<Family>Lï¿½hning</Family>
+<Family>Löhning</Family>
 <Given>Michael</Given>
 </Name>
 <BirthDate>1973-01-01</BirthDate>
@@ -11067,7 +11066,7 @@
 <Person sex="F">
 <Id>00415</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Anke</Given>
 </Name>
 <BirthDate>1966-01-01</BirthDate>
@@ -11279,7 +11278,7 @@
 <Person sex="F">
 <Id>00077</Id>
 <Name>
-<Family>Dï¿½hnn</Family>
+<Family>Dähnn</Family>
 <Given>Bianca</Given>
 </Name>
 <BirthDate>1965-01-01</BirthDate>
@@ -11371,7 +11370,7 @@
 <Person sex="F">
 <Id>01414</Id>
 <Name>
-<Family>Finkenstï¿½dt</Family>
+<Family>Finkenstädt</Family>
 <Given>Andrea</Given>
 </Name>
 <BirthDate>1967-01-01</BirthDate>
@@ -11452,7 +11451,7 @@
 <Person sex="F">
 <Id>00273</Id>
 <Name>
-<Family>Bï¿½hme</Family>
+<Family>Böhme</Family>
 <Given>Petra</Given>
 </Name>
 <BirthDate>1965-01-01</BirthDate>
@@ -11558,7 +11557,7 @@
 <Person sex="M">
 <Id>00226</Id>
 <Name>
-<Family>Kï¿½hler</Family>
+<Family>Köhler</Family>
 <Given>Jens</Given>
 </Name>
 <BirthDate>1968-01-01</BirthDate>
@@ -11689,8 +11688,8 @@
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>340</BibNumber>
@@ -11714,14 +11713,14 @@
 <Id>01755</Id>
 <Name>
 <Family>Eppendorfer</Family>
-<Given>Jï¿½rg</Given>
+<Given>Jörg</Given>
 </Name>
 <BirthDate>1965-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>56</Id>
-<Name>SV KOWEG Gï¿½rlitz</Name>
-<ShortName>SV KOWEG Gï¿½rlitz</ShortName>
+<Name>SV KOWEG Görlitz</Name>
+<ShortName>SV KOWEG Görlitz</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>325</BibNumber>
@@ -11744,7 +11743,7 @@
 <Person sex="M">
 <Id>00043</Id>
 <Name>
-<Family>Stï¿½whaas</Family>
+<Family>Stöwhaas</Family>
 <Given>Jens</Given>
 </Name>
 <BirthDate>1968-01-01</BirthDate>
@@ -12243,8 +12242,8 @@
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>328</BibNumber>
@@ -12351,7 +12350,7 @@
 <Id>01228</Id>
 <Name>
 <Family>Wendler</Family>
-<Given>Gï¿½ran</Given>
+<Given>Göran</Given>
 </Name>
 <BirthDate>1966-01-01</BirthDate>
 </Person>
@@ -13058,7 +13057,7 @@
 <Person sex="M">
 <Id>00418</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Matthias</Given>
 </Name>
 <BirthDate>1962-01-01</BirthDate>
@@ -13096,8 +13095,8 @@
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>392</BibNumber>
@@ -13242,7 +13241,7 @@
 <Person sex="M">
 <Id>00771</Id>
 <Name>
-<Family>Lï¿½sch</Family>
+<Family>Lösch</Family>
 <Given>Steffen</Given>
 </Name>
 <BirthDate>1962-01-01</BirthDate>
@@ -13273,7 +13272,7 @@
 <Person sex="M">
 <Id>00042</Id>
 <Name>
-<Family>Schï¿½rer</Family>
+<Family>Schürer</Family>
 <Given>Frank</Given>
 </Name>
 <BirthDate>1963-01-01</BirthDate>
@@ -13397,7 +13396,7 @@
 <Person sex="M">
 <Id>00068</Id>
 <Name>
-<Family>Dï¿½hnn</Family>
+<Family>Dähnn</Family>
 <Given>Martin</Given>
 </Name>
 <BirthDate>1963-01-01</BirthDate>
@@ -13519,7 +13518,7 @@
 <Person sex="M">
 <Id>00271</Id>
 <Name>
-<Family>Bï¿½hme</Family>
+<Family>Böhme</Family>
 <Given>Gerd</Given>
 </Name>
 <BirthDate>1964-01-01</BirthDate>
@@ -13613,7 +13612,7 @@
 <Id>00312</Id>
 <Name>
 <Family>Schubert</Family>
-<Given>Jï¿½rgen</Given>
+<Given>Jürgen</Given>
 </Name>
 <BirthDate>1963-01-01</BirthDate>
 </Person>
@@ -13672,7 +13671,7 @@
 <Person sex="M">
 <Name>
 <Family>Kohler</Family>
-<Given>Jï¿½rgen</Given>
+<Given>Jürgen</Given>
 </Name>
 <BirthDate>1964-01-01</BirthDate>
 </Person>
@@ -13764,7 +13763,7 @@
 <Person sex="M">
 <Id>01917</Id>
 <Name>
-<Family>Groï¿½e</Family>
+<Family>Große</Family>
 <Given>Veit</Given>
 </Name>
 <BirthDate>1963-01-01</BirthDate>
@@ -13802,8 +13801,8 @@
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>373</BibNumber>
@@ -13857,7 +13856,7 @@
 <Person sex="M">
 <Id>00782</Id>
 <Name>
-<Family>Rï¿½ster</Family>
+<Family>Rüster</Family>
 <Given>Thomas</Given>
 </Name>
 <BirthDate>1962-01-01</BirthDate>
@@ -13918,8 +13917,8 @@
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>368</BibNumber>
@@ -13939,7 +13938,7 @@
 <Id>00400</Id>
 <Name>
 <Family>Leibiger</Family>
-<Given>Jï¿½rg</Given>
+<Given>Jörg</Given>
 </Name>
 <BirthDate>1961-01-01</BirthDate>
 </Person>
@@ -14431,7 +14430,7 @@
 <Person sex="F">
 <Id>01633</Id>
 <Name>
-<Family>Wï¿½ldecke</Family>
+<Family>Wöldecke</Family>
 <Given>Ulrike</Given>
 </Name>
 <BirthDate>1957-01-01</BirthDate>
@@ -14524,7 +14523,7 @@
 <Person sex="F">
 <Id>00528</Id>
 <Name>
-<Family>Mï¿½ser</Family>
+<Family>Möser</Family>
 <Given>Ingrid</Given>
 </Name>
 <BirthDate>1955-01-01</BirthDate>
@@ -14601,7 +14600,7 @@
 <Id>00023</Id>
 <Name>
 <Family>Baack</Family>
-<Given>Rï¿½diger</Given>
+<Given>Rüdiger</Given>
 </Name>
 <BirthDate>1958-01-01</BirthDate>
 </Person>
@@ -14631,7 +14630,7 @@
 <Person sex="M">
 <Id>00529</Id>
 <Name>
-<Family>Mï¿½ser</Family>
+<Family>Möser</Family>
 <Given>Michael</Given>
 </Name>
 <BirthDate>1955-01-01</BirthDate>
@@ -14756,14 +14755,14 @@
 <Id>01006</Id>
 <Name>
 <Family>Reischuk</Family>
-<Given>Rï¿½diger</Given>
+<Given>Rüdiger</Given>
 </Name>
 <BirthDate>1955-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>437</BibNumber>
@@ -14786,7 +14785,7 @@
 <Person sex="M">
 <Id>02370</Id>
 <Name>
-<Family>Gï¿½hring</Family>
+<Family>Göhring</Family>
 <Given>Ulli</Given>
 </Name>
 <BirthDate>1959-01-01</BirthDate>
@@ -14972,7 +14971,7 @@
 <Id>01431</Id>
 <Name>
 <Family>Beyer</Family>
-<Given>Jï¿½rg</Given>
+<Given>Jörg</Given>
 </Name>
 <BirthDate>1956-01-01</BirthDate>
 </Person>
@@ -15099,8 +15098,8 @@
 </Person>
 <Organisation>
 <Id>90003</Id>
-<Name>SV Kyffhï¿½user</Name>
-<ShortName>SV Kyffhï¿½user</ShortName>
+<Name>SV Kyffhäuser</Name>
+<ShortName>SV Kyffhäuser</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>440</BibNumber>
@@ -15185,7 +15184,7 @@
 <Person sex="M">
 <Id>00307</Id>
 <Name>
-<Family>Hï¿½fer</Family>
+<Family>Höfer</Family>
 <Given>Helmut</Given>
 </Name>
 <BirthDate>1955-01-01</BirthDate>
@@ -15216,7 +15215,7 @@
 <Person sex="M">
 <Id>02561</Id>
 <Name>
-<Family>Kï¿½ppele</Family>
+<Family>Käppele</Family>
 <Given>Henning</Given>
 </Name>
 <BirthDate>1958-01-01</BirthDate>
@@ -15308,15 +15307,15 @@
 <Person sex="M">
 <Id>02088</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Eugen</Given>
 </Name>
 <BirthDate>1948-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>58</Id>
-<Name>TSV Grï¿½nwald</Name>
-<ShortName>TSV Grï¿½nwald</ShortName>
+<Name>TSV Grünwald</Name>
+<ShortName>TSV Grünwald</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>433</BibNumber>
@@ -15592,7 +15591,7 @@
 <Person sex="F">
 <Id>01250</Id>
 <Name>
-<Family>Lï¿½winger</Family>
+<Family>Löwinger</Family>
 <Given>Sigrid</Given>
 </Name>
 <BirthDate>1953-01-01</BirthDate>
@@ -15889,7 +15888,7 @@
 <Person sex="M">
 <Id>01236</Id>
 <Name>
-<Family>Hï¿½rtelt</Family>
+<Family>Härtelt</Family>
 <Given>Helmut</Given>
 </Name>
 <BirthDate>1951-01-01</BirthDate>
@@ -15927,8 +15926,8 @@
 </Person>
 <Organisation>
 <Id>120</Id>
-<Name>Osnabrï¿½cker TB</Name>
-<ShortName>Osnabrï¿½cker TB</ShortName>
+<Name>Osnabrücker TB</Name>
+<ShortName>Osnabrücker TB</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>482</BibNumber>
@@ -16137,7 +16136,7 @@
 <Person sex="M">
 <Id>01415</Id>
 <Name>
-<Family>Finkenstï¿½dt</Family>
+<Family>Finkenstädt</Family>
 <Given>Frank</Given>
 </Name>
 <BirthDate>1943-01-01</BirthDate>
@@ -16168,7 +16167,7 @@
 <Person sex="M">
 <Id>01992</Id>
 <Name>
-<Family>Gï¿½tte</Family>
+<Family>Götte</Family>
 <Given>Heinrich</Given>
 </Name>
 <BirthDate>1952-01-01</BirthDate>
@@ -16199,7 +16198,7 @@
 <Person sex="M">
 <Id>00310</Id>
 <Name>
-<Family>Meiï¿½ner</Family>
+<Family>Meißner</Family>
 <Given>Ralph</Given>
 </Name>
 <BirthDate>1953-01-01</BirthDate>
@@ -16354,7 +16353,7 @@
 <Person sex="M">
 <Id>01076</Id>
 <Name>
-<Family>Wï¿½ldecke</Family>
+<Family>Wöldecke</Family>
 <Given>Wolfgang</Given>
 </Name>
 <BirthDate>1954-01-01</BirthDate>
@@ -16385,7 +16384,7 @@
 <Person sex="M">
 <Id>00749</Id>
 <Name>
-<Family>Trï¿½ï¿½e</Family>
+<Family>Tröße</Family>
 <Given>Lutz</Given>
 </Name>
 <BirthDate>1950-01-01</BirthDate>
@@ -16554,15 +16553,15 @@
 <Person sex="F">
 <Id>01090</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Gerda</Given>
 </Name>
 <BirthDate>1947-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>105</Id>
-<Name>SV Mï¿½rlenbach</Name>
-<ShortName>SV Mï¿½rlenbach</ShortName>
+<Name>SV Mörlenbach</Name>
+<ShortName>SV Mörlenbach</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>493</BibNumber>
@@ -16758,7 +16757,7 @@
 <Person sex="M">
 <Id>00268</Id>
 <Name>
-<Family>Krï¿½pfganz</Family>
+<Family>Krüpfganz</Family>
 <Given>Rolf</Given>
 </Name>
 <BirthDate>1946-01-01</BirthDate>
@@ -16827,8 +16826,8 @@
 </Person>
 <Organisation>
 <Id>6</Id>
-<Name>SV Bad Dï¿½ben</Name>
-<ShortName>SV Bad Dï¿½ben</ShortName>
+<Name>SV Bad Düben</Name>
+<ShortName>SV Bad Düben</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>513</BibNumber>
@@ -16883,7 +16882,7 @@
 <Id>00342</Id>
 <Name>
 <Family>Schwanitz</Family>
-<Given>Jï¿½rgen</Given>
+<Given>Jürgen</Given>
 </Name>
 <BirthDate>1949-01-01</BirthDate>
 </Person>
@@ -16944,7 +16943,7 @@
 <Person sex="M">
 <Id>01299</Id>
 <Name>
-<Family>Nï¿½s</Family>
+<Family>Nüs</Family>
 <Given>Peter</Given>
 </Name>
 <BirthDate>1945-01-01</BirthDate>
@@ -17099,7 +17098,7 @@
 <Person sex="M">
 <Id>00533</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Rainer</Given>
 </Name>
 <BirthDate>1945-01-01</BirthDate>
@@ -17423,7 +17422,7 @@
 <Id>01248</Id>
 <Name>
 <Family>Lekauskas</Family>
-<Given>Bï¿½rbel</Given>
+<Given>Bärbel</Given>
 </Name>
 <BirthDate>1943-01-01</BirthDate>
 </Person>
@@ -17633,8 +17632,8 @@
 </Person>
 <Organisation>
 <Id>15</Id>
-<Name>ESV Lok Berlin-Schï¿½neweide</Name>
-<ShortName>ESV Lok Berlin-Schï¿½neweide</ShortName>
+<Name>ESV Lok Berlin-Schöneweide</Name>
+<ShortName>ESV Lok Berlin-Schöneweide</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>735</BibNumber>
@@ -17751,7 +17750,7 @@
 <Id>00703</Id>
 <Name>
 <Family>Gohde</Family>
-<Given>Gï¿½nter</Given>
+<Given>Günter</Given>
 </Name>
 <BirthDate>1939-01-01</BirthDate>
 </Person>
@@ -17781,15 +17780,15 @@
 <Person sex="M">
 <Id>01091</Id>
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Peter</Given>
 </Name>
 <BirthDate>1942-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>105</Id>
-<Name>SV Mï¿½rlenbach</Name>
-<ShortName>SV Mï¿½rlenbach</ShortName>
+<Name>SV Mörlenbach</Name>
+<ShortName>SV Mörlenbach</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>530</BibNumber>
@@ -17985,7 +17984,7 @@
 <Person sex="F">
 <Id>00565</Id>
 <Name>
-<Family>Blï¿½cher</Family>
+<Family>Blöcher</Family>
 <Given>Helga</Given>
 </Name>
 <BirthDate>1937-01-01</BirthDate>
@@ -18054,8 +18053,8 @@
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>543</BibNumber>
@@ -18240,14 +18239,14 @@
 <Id>01274</Id>
 <Name>
 <Family>Schmidt</Family>
-<Given>Gï¿½nter</Given>
+<Given>Günter</Given>
 </Name>
 <BirthDate>1936-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>132</Id>
-<Name>Schï¿½nebecker SV 1861</Name>
-<ShortName>Schï¿½nebecker SV 1861</ShortName>
+<Name>Schönebecker SV 1861</Name>
+<ShortName>Schönebecker SV 1861</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>551</BibNumber>
@@ -18401,8 +18400,8 @@
 </Person>
 <Organisation>
 <Id>120</Id>
-<Name>Osnabrï¿½cker TB</Name>
-<ShortName>Osnabrï¿½cker TB</ShortName>
+<Name>Osnabrücker TB</Name>
+<ShortName>Osnabrücker TB</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>556</BibNumber>
@@ -18432,8 +18431,8 @@
 </Person>
 <Organisation>
 <Id>120</Id>
-<Name>Osnabrï¿½cker TB</Name>
-<ShortName>Osnabrï¿½cker TB</ShortName>
+<Name>Osnabrücker TB</Name>
+<ShortName>Osnabrücker TB</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>550</BibNumber>
@@ -18597,8 +18596,8 @@
 </Person>
 <Organisation>
 <Id>15</Id>
-<Name>ESV Lok Berlin-Schï¿½neweide</Name>
-<ShortName>ESV Lok Berlin-Schï¿½neweide</ShortName>
+<Name>ESV Lok Berlin-Schöneweide</Name>
+<ShortName>ESV Lok Berlin-Schöneweide</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>564</BibNumber>
@@ -18628,8 +18627,8 @@
 </Person>
 <Organisation>
 <Id>79</Id>
-<Name>DARC Kï¿½ln</Name>
-<ShortName>DARC Kï¿½ln</ShortName>
+<Name>DARC Köln</Name>
+<ShortName>DARC Köln</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>563</BibNumber>
@@ -18721,8 +18720,8 @@
 </Person>
 <Organisation>
 <Id>94</Id>
-<Name>Lï¿½becker Turnerschaft</Name>
-<ShortName>Lï¿½becker Turnerschaft</ShortName>
+<Name>Lübecker Turnerschaft</Name>
+<ShortName>Lübecker Turnerschaft</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>570</BibNumber>
@@ -18838,7 +18837,7 @@
 <Person sex="M">
 <Id>00778</Id>
 <Name>
-<Family>Nï¿½gler</Family>
+<Family>Nägler</Family>
 <Given>Klaus</Given>
 </Name>
 <BirthDate>1934-01-01</BirthDate>
@@ -18876,8 +18875,8 @@
 </Person>
 <Organisation>
 <Id>120</Id>
-<Name>Osnabrï¿½cker TB</Name>
-<ShortName>Osnabrï¿½cker TB</ShortName>
+<Name>Osnabrücker TB</Name>
+<ShortName>Osnabrücker TB</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>562</BibNumber>
@@ -18919,7 +18918,7 @@
 <Id>00260</Id>
 <Name>
 <Family>Berndt</Family>
-<Given>Kï¿½te</Given>
+<Given>Käte</Given>
 </Name>
 <BirthDate>1926-01-01</BirthDate>
 </Person>
@@ -18967,7 +18966,7 @@
 <Person sex="M">
 <Id>00327</Id>
 <Name>
-<Family>Frï¿½hner</Family>
+<Family>Fröhner</Family>
 <Given>Klaus</Given>
 </Name>
 <BirthDate>1929-01-01</BirthDate>
@@ -18998,7 +18997,7 @@
 <Person sex="M">
 <Id>00714</Id>
 <Name>
-<Family>Hï¿½fner</Family>
+<Family>Häfner</Family>
 <Given>Martin</Given>
 </Name>
 <BirthDate>1928-01-01</BirthDate>
@@ -19030,7 +19029,7 @@
 <Id>00166</Id>
 <Name>
 <Family>Brusdeilins</Family>
-<Given>Gï¿½nter</Given>
+<Given>Günter</Given>
 </Name>
 <BirthDate>1926-01-01</BirthDate>
 </Person>
@@ -19199,7 +19198,7 @@
 <PersonResult>
 <Person sex="M">
 <Name>
-<Family>Mï¿½ller</Family>
+<Family>Müller</Family>
 <Given>Harald</Given>
 </Name>
 <BirthDate>1976-01-01</BirthDate>
@@ -19337,7 +19336,7 @@
 <Person sex="F">
 <Id>01769</Id>
 <Name>
-<Family>Hï¿½mmelmann</Family>
+<Family>Hämmelmann</Family>
 <Given>Carina</Given>
 </Name>
 <BirthDate>1985-01-01</BirthDate>
@@ -19399,14 +19398,14 @@
 <Id>01139</Id>
 <Name>
 <Family>Voit</Family>
-<Given>Gï¿½nter</Given>
+<Given>Günter</Given>
 </Name>
 <BirthDate>1939-01-01</BirthDate>
 </Person>
 <Organisation>
 <Id>114</Id>
-<Name>VfL Nï¿½rnberg</Name>
-<ShortName>VfL Nï¿½rnberg</ShortName>
+<Name>VfL Nürnberg</Name>
+<ShortName>VfL Nürnberg</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>636</BibNumber>
@@ -19525,8 +19524,8 @@
 </Person>
 <Organisation>
 <Id>114</Id>
-<Name>VfL Nï¿½rnberg</Name>
-<ShortName>VfL Nï¿½rnberg</ShortName>
+<Name>VfL Nürnberg</Name>
+<ShortName>VfL Nürnberg</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>630</BibNumber>
@@ -19657,8 +19656,8 @@
 </Person>
 <Organisation>
 <Id>90003</Id>
-<Name>SV Kyffhï¿½user</Name>
-<ShortName>SV Kyffhï¿½user</ShortName>
+<Name>SV Kyffhäuser</Name>
+<ShortName>SV Kyffhäuser</ShortName>
 </Organisation>
 <Result raceNumber="1">
 <BibNumber>647</BibNumber>

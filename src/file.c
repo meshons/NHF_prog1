@@ -190,7 +190,7 @@ void TXT_read(FILE *f, Category **list, R_list listtype)
 }
 
 //IOF
-void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
+void IOF_read(FILE *f, Category **list, R_list listtype, R_charset charset)
 {
     int size = 6 * (namesize + 1);
     if (f == NULL)
@@ -217,7 +217,7 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
     //char Organisation[15] = "<Organisation>";
     //char Organisation_end[15] = "</Organisation>";
     bool find = false;
-    bool result = false;
+    bool results = false;
 
     char cpos[namesize] = {0};
     char category[namesize] = {0};
@@ -234,13 +234,14 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
         int i;
         if (strncmp(line, ShortName, SN_l) == 0)
         {
-            if (result)
+            if (results)
             {
                 for (i = 0; (line[SN_l + i] != '<' && i < namesize - 1); i++)
                     club[i] = line[SN_l + i];
             }
             else
             {
+                memset(category, 0, namesize);
                 for (i = 0; (line[SN_l + i] != '<' && i < namesize - 1); i++)
                     category[i] = line[SN_l + i];
             }
@@ -249,7 +250,7 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
         {
             for (i = 0; (line[F_l + i] != '<' && i < namesize - 1); i++)
                 surname[i] = line[F_l + i];
-            result = true;
+            results = true;
         }
         else if (strncmp(line, Given, G_l) == 0)
         {
@@ -282,7 +283,7 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
             for (i = 0; (line[S_l + i] != '<' && i < namesize - 1); i++)
                 cstatus[i] = line[S_l + i];
             find = true;
-            result = false;
+            results = false;
         }
 
         if (find)
@@ -292,12 +293,16 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
             {
                 error = true;
             }
+            if(listtype==start){
             if (sscanf(ct, "%d:%d:%d", &h, &m, &s) == 3)
                 t = h * 60 * 60 + m * 60 + s;
             else if (sscanf(ct, "%d:%d", &m, &s) == 2)
                 t = m * 60 + s;
             else
                 t = -1;
+            }else{
+                sscanf(ct,"%d",&t);
+            }
 
             if (listtype == start)
             {
@@ -380,7 +385,6 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
             }
 
             memset(cpos, 0, namesize);
-            memset(category, 0, namesize);
             memset(surname, 0, namesize * 3);
             memset(vorname, 0, namesize * 3);
             memset(club, 0, namesize * 3);
@@ -392,8 +396,6 @@ void IOF_read(FILE *f, Category **list, R_charset charset, R_list listtype)
         }
     }
 }
-
-//csv
 
 Result *CSV_line(char *line, R_charset charset, R_list listtype)
 {

@@ -14,12 +14,7 @@ typedef struct Glyph{
     SDL_Texture * texture;
     SDL_Rect rect;
 }Glyph;
-typedef enum Align { LEFT, CENTER, RIGHT } Align;
-
-typedef struct Action{
-
-    struct Action *next;
-}Action;
+typedef enum Align { LEFT, RIGHT } Align;
 
 unsigned short getGlyphId(unsigned short i);
 unsigned short getGlyphCH(unsigned short i);

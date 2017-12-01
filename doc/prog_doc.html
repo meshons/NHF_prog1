@@ -141,7 +141,7 @@
                                     </code>
                                     <p>
                                         Egész számot alakít át unicode-á max 9999-ig, min -9999-től.
-                                    </p>
+                                    </p><hr>
                                 </li>
                             </ul>
                         </li>
@@ -290,121 +290,7 @@
 
                     </ul>
                 </li>
-                <li>
-                    <h3>font.c/font.h</h3>
-                    <p>A ttf betűtípus betöltésével és kezelésével kapcsolatos függvényeket lát el.</p>
-                    <ul>
-                        <li>
-                            <h3>definíciók</h3>
-                            <ul>
-                                <li>
-                                    <code>
-                                        <span class="purple">#define</span>
-                                        <span class="yellow"> max_glyph</span>
-                                        <span class="green">319</span>
-                                    </code>
-                                    <p>
-                                        A Unicode karakterek <code><span class="blue">Glyph</span></code>-jeinek indexelésénél van szerepe. 
-                                    </p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3>Felsorolások</h3>
-                            <ul>
-                                <li>
-                                    <code>
-                                        <span class="blue">typedef enum</span>
-                                        Align
-                                    </code>
-                                    <p>értékek:</p>
-                                    <code>
-                                        <ul>
-                                            <li>LEFT</li>
-                                            <li>RIGHT</li>
-                                        </ul>
-                                    </code>
-                                    <P>
-                                        A betűk kiírásánal honnan írja ki.
-                                    </P>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3>Struktúrák</h3>
-                            <ul>
-                                <li>
-                                    <code>
-                                        <span class="blue">typedef struct</span> Glyph</code>
-                                    <ul>
-                                        <li>
-                                            <code>
-                                                <span class="blue">SDL_Texture</span> * texture</code> - a betű képe
-                                        </li>
-                                        <li>
-                                            <code>
-                                                <span class="blue">SDL_Rect</span> * rect</code> - a betű méretei
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3>Függvények</h3>
-                            <ul>
-                                <li>
-                                    <code>
-                                        <span class="blue">unsigned short </span>
-                                        <span class="yellow">getGlyphId</span>(
-                                        <span class="blue">unsigned short</span> i)
-                                    </code>
-                                    <p>
-                                        Az Unicode karakterkódból előállítja az indexét.
-                                    </p><hr>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">unsigned short </span>
-                                        <span class="yellow">getGlyphCH</span>(
-                                        <span class="blue">unsigned short</span> i)
-                                    </code>
-                                    <p>
-                                        Az indexéből előállítja az Unicode karakterét.
-                                    </p><hr>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void </span>
-                                        <span class="yellow">loadGlyphs</span>(
-                                        <span class="blue">Glyph</span> * g,
-                                        <span class="blue">TTF_Font</span> * font,
-                                        <span class="blue">SDL_Color</span> color,
-                                        <span class="blue">SDL_Renderer</span> * renderer)
-                                    </code>
-                                    <p>
-                                        Betölti a
-                                        <code>g</code>-be a
-                                        <code>font</code>-ban lévő karaktereket.
-                                    </p><hr>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void </span>
-                                        <span class="yellow">destroyGlyphs</span>(
-                                        <span class="blue">Glyph</span> * g)
-                                    </code>
-                                    <p>
-                                        Törli a
-                                        <code>g</code>-ben lévő karaktereket.
-                                    </p>
-                                </li>
 
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
         <!--<li>
                     <h3>log.c/log.h</h3>
                     <p>
@@ -608,7 +494,7 @@
                             <ul>
                                 <li>
                                     <code>
-                                        <span class="blue">atomic_short</span> pos, prev</code> - A futó helyezése, illetve egy ki nem használt
+                                        <span class="blue">atomic_short</span> pos</code> - A futó helyezése.
                                     változó
                                 </li>
                                 <li>
@@ -627,14 +513,15 @@
                                     <code>
                                         <span class="blue">atomic_int</span> t</code> - Futó ideje mp-ben
                                 </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">atomic_bool</span> shown,poschanged</code> - kihasználatlan változók a megjelenítéshez
-                                </li>
+
                                 <li>
                                     <code>
                                         <span class="blue">atomic_int</span> starttime</code> - A futó rajtideje mp-ben
                                 </li>
+                                <li>
+                                        <code>
+                                            <span class="blue">time_t</span> updated</code> - Az utolsó frissitésének időpontja
+                                    </li>
                                 <li>
                                     <code>
                                         <span class="blue">struct Result</span> *next</code> - A listában a következő eredményre mutat
@@ -647,7 +534,7 @@
                             <ul>
                                 <li>
                                     <code>
-                                        <span class="blue">char</span> name[namesize]</code> - A kategória neve használt változó
+                                        <span class="blue">char</span> name[namesize]</code> - A kategória neve
                                 </li>
                                 <li>
                                     <code>
@@ -949,121 +836,114 @@
             </ul>
         </li>
         <li>
-            <h3>text.c/text.h</h3>
-            <p>Grafikus megjelenítéshez tartalmaz elemeket.</p>
-            <ul>
-                <li>
-                    <h3>definíciók</h3>
-                    <ul>
-                        <li>
-                            <code>
-                                <span class="purple">#define</span>
-                                <span class="yellow"> max_glyph</span>
-                                <span class="green">319</span>
-                            </code>
-                            <p>
-                                Ez elég nagy eséllyel meg fog változni. Ennek a szerepe a betűformák indexelésénél van, méghozzá ez adja meg, hogy maximum
-                                mennyit olvasson be a ttf-ből, ami jelen pillanatban
+                <h3>text.c/text.h</h3>
+                <p>A ttf betűtípus betöltésével és kezelésével kapcsolatos függvényeket lát el.</p>
+                <p>A kategóriák és eredmények képernyőn megjelenítéséhez tartalmaz függvényeket.</p>
+                <ul>
+                    <li>
+                        <h3>definíciók</h3>
+                        <ul>
+                            <li>
                                 <code>
+                                    <span class="purple">#define</span>
+                                    <span class="yellow"> max_glyph</span>
                                     <span class="green">319</span>
-                                </code>, de maga az Open Sans ttf-je kb 900 betűt tartalmaz. Nos nem volt még kedvem teljesen kiválogatni
-                                melyikek kellenek, ezért csak az ascii, a latin2 és egyéb szükségletek vannak eddig. Sajnos
-                                nem lehetett az alapján, hogy mennyit tud betölteni az SDL2ttf, mivel kb 64000-et betölt
-                                hiba nélkül nem tudva melyik üres és ez elég nagy pazarlás.
-                            </p>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>Felsorolások</h3>
-                    <ul>
-                        <li>
-                            <code>
-                                <span class="blue">typedef enum</span>
-                                Align
-                            </code>
-                            <p>értékek:</p>
-                            <code>
+                                </code>
+                                <p>
+                                    A Unicode karakterek <code><span class="blue">Glyph</span></code>-jeinek indexelésénél van szerepe. 
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Felsorolások</h3>
+                        <ul>
+                            <li>
+                                <code>
+                                    <span class="blue">typedef enum</span>
+                                    Align
+                                </code>
+                                <p>értékek:</p>
+                                <code>
+                                    <ul>
+                                        <li>LEFT</li>
+                                        <li>RIGHT</li>
+                                    </ul>
+                                </code>
+                                <P>
+                                    A betűk kiírásánal honnan írja ki.
+                                </P>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Struktúrák</h3>
+                        <ul>
+                            <li>
+                                <code>
+                                    <span class="blue">typedef struct</span> Glyph</code>
                                 <ul>
-                                    <li>LEFT</li>
-                                    <li>CENTER</li>
-                                    <li>RIGHT</li>
+                                    <li>
+                                        <code>
+                                            <span class="blue">SDL_Texture</span> * texture</code> - a betű képe
+                                    </li>
+                                    <li>
+                                        <code>
+                                            <span class="blue">SDL_Rect</span> * rect</code> - a betű méretei
+                                    </li>
                                 </ul>
-                            </code>
-                            <P>
-                                A betűk kiírásánal honnan írja ki. A CENTER lehet el lesz dobva.
-                            </P>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>Struktúrák</h3>
-                    <ul>
-                        <li>
-                            <code>
-                                <span class="blue">typedef struct</span> Glyph</code>
-                            <ul>
-                                <li>
-                                    <code>
-                                        <span class="blue">SDL_Texture</span> * texture</code> - a betű képe
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">SDL_Rect</span> * rect</code> - a betű méretei
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>Függvények</h3>
-                    <ul>
-                        <li>
-                            <code>
-                                <span class="blue">unsigned short </span>
-                                <span class="yellow">getGlyphId</span>(
-                                <span class="blue">unsigned short</span> i)
-                            </code>
-                            <p>
-                                Az Unicode karakterkódból előállítja az indexét.
-                            </p>
-                        </li>
-                        <li>
-                            <code>
-                                <span class="blue">unsigned short </span>
-                                <span class="yellow">getGlyphCH</span>(
-                                <span class="blue">unsigned short</span> i)
-                            </code>
-                            <p>
-                                Az indexéből előállítja az Unicode karakterét.
-                            </p>
-                        </li>
-                        <li>
-                            <code>
-                                <span class="blue">void </span>
-                                <span class="yellow">loadGlyphs</span>(
-                                <span class="blue">Glyph</span> * g,
-                                <span class="blue">TTF_Font</span> * font,
-                                <span class="blue">SDL_Color</span> color,
-                                <span class="blue">SDL_Renderer</span> * renderer)
-                            </code>
-                            <p>
-                                Betölti a
-                                <code>g</code>-be a
-                                <code>font</code>-ban lévő karaktereket.
-                            </p>
-                        </li>
-                        <li>
-                            <code>
-                                <span class="blue">void </span>
-                                <span class="yellow">destroyGlyphs</span>(
-                                <span class="blue">Glyph</span> * g)
-                            </code>
-                            <p>
-                                Törli a
-                                <code>g</code>-ben lévő karaktereket.
-                            </p>
-                        </li>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Függvények</h3>
+                        <ul>
+                            <li>
+                                <code>
+                                    <span class="blue">unsigned short </span>
+                                    <span class="yellow">getGlyphId</span>(
+                                    <span class="blue">unsigned short</span> i)
+                                </code>
+                                <p>
+                                    Az Unicode karakterkódból előállítja az indexét.
+                                </p><hr>
+                            </li>
+                            <li>
+                                <code>
+                                    <span class="blue">unsigned short </span>
+                                    <span class="yellow">getGlyphCH</span>(
+                                    <span class="blue">unsigned short</span> i)
+                                </code>
+                                <p>
+                                    Az indexéből előállítja az Unicode karakterét.
+                                </p><hr>
+                            </li>
+                            <li>
+                                <code>
+                                    <span class="blue">void </span>
+                                    <span class="yellow">loadGlyphs</span>(
+                                    <span class="blue">Glyph</span> * g,
+                                    <span class="blue">TTF_Font</span> * font,
+                                    <span class="blue">SDL_Color</span> color,
+                                    <span class="blue">SDL_Renderer</span> * renderer)
+                                </code>
+                                <p>
+                                    Betölti a
+                                    <code>g</code>-be a
+                                    <code>font</code>-ban lévő karaktereket.
+                                </p><hr>
+                            </li>
+                            <li>
+                                <code>
+                                    <span class="blue">void </span>
+                                    <span class="yellow">destroyGlyphs</span>(
+                                    <span class="blue">Glyph</span> * g)
+                                </code>
+                                <p>
+                                    Törli a
+                                    <code>g</code>-ben lévő karaktereket.
+                                </p>
+                            </li>
                         <li>
                             <code>
                                 <span class="blue">void </span>

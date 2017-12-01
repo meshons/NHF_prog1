@@ -87,7 +87,7 @@ int main(int argc, char **argv)
             else if (set.format == csv)
                 CSV_read(startfile, &list, start, set.charset);
             else if (set.format == xml)
-                IOF_read(startfile, &list, result, set.charset);
+                IOF_read(startfile, &list, start, set.charset);
             fclose(startfile);
         }
     }

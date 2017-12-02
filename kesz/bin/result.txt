@@ -1,0 +1,5 @@
+windows-1252
+M18	1	Stork	Gábor	SDS	1:00:48
+M18	2	Szabó	Józsi	SDS	1:00:48
+M18	4	Teszt	Elek	SDS	1:00:48
+M20	4	Teszt	Teszt	SDS	40:40

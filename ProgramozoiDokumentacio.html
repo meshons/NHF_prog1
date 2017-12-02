@@ -3,18 +3,23 @@
 
 <head>
     <meta charset="utf-8" lang="hu_HU" />
-    <title>NHF félkész megoldás dokumentáció - NO047V Stork Gábor</title>
+    <title>NHF programozói dokumentáció - NO047V Stork Gábor</title>
     <link href="doc/style.css" type="text/css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
-    <h1 class="cim">NHF félkész megoldás dokumentáció - NO047V Stork Gábor</h1>
+    <h1 class="cim">NHF programozói dokumentáció - NO047V Stork Gábor</h1>
     <ul>
         <li>
             <h2 class="alcim">
-                Félkész megoldás összefoglalva
+                Fordítás és szükségletei
             </h2>
+            <p>A fordítás gcc-vel windows-on történhet
+                <code>make release</code>, linux-on
+                <code>make linux</code> paranccsal.</p>
+            <p>A program SDL2-t és SDL2_ttf-et használ!</p>
+            <p>Az operációs rendszernek támogatnia kell a phtread-ot.</p>
         </li>
         <li>
             <h2 class="alcim">
@@ -24,13 +29,11 @@
                 <li>
                     <h3>charset.c/charset.h</h3>
                     <p>
-                        Csak a karakterkódolásokhoz használt segédfunkciókat tartalmaz, nem szeretném mindet felsorolni a félkész megoldásban, mivel
-                        még nem optimalizáltam, hogy melyik fog kelleni és melyik nem. Használatuk egyértelmű, egyik sem
-                        vizsgálja a tömb méretét.
+                        A karakterkódolásokhoz szükséges függvényeket tartalmazza, továbbá összehasonlító és átalakító függvényeket.
                     </p>
                     <ul>
                         <li>
-                            <h3>Függvények (nem az összes csak a kevésbé feleslegesnek tartottak)</h3>
+                            <h3>Függvények</h3>
                             <ul>
                                 <li>
                                     <code>
@@ -43,47 +46,68 @@
                                 <li>
                                     <code>
                                         <span class="blue">void</span>
-                                        <span class="yellow">utf8_2_unicode</span>(
+                                        <span class="yellow">ascii_2_unicode_a</span>(
+                                        <span class="blue">char</span> * ascii,
+                                        <span class="blue">atomic_ushort</span> * uni)
+                                    </code>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">utf8_2_unicode_a</span>(
                                         <span class="blue">char</span> * utf8,
-                                        <span class="blue">unsigned short</span> * uni)
+                                        <span class="blue">atomic_ushort</span> * uni)
                                     </code>
                                 </li>
                                 <li>
                                     <code>
                                         <span class="blue">void</span>
-                                        <span class="yellow">win1250_2_unicode</span>(
-                                        <span class="blue">unsigned char</span> * win1250,
-                                        <span class="blue">unsigned short</span> * uni)
-                                    </code>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void</span>
-                                        <span class="yellow">win1252_2_unicode</span>(
-                                        <span class="blue">unsigned char</span> * win1252,
-                                        <span class="blue">unsigned short</span> * uni)
-                                    </code>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void</span>
-                                        <span class="yellow">latin2_2_unicode</span>(
+                                        <span class="yellow">latin2_2_unicode_a</span>(
                                         <span class="blue">unsigned char</span> * latin2,
-                                        <span class="blue">unsigned short</span> * uni)
+                                        <span class="blue">atomic_ushort</span> * uni)
                                     </code>
                                 </li>
-                            </ul>
-                            <p>A fentebb említetteknek létezik a forráskódban
-                                <code>
-                                    <span class="blue">unsigned short</span>
-                                </code> helyett
-                                <code>
-                                    <span class="blue">atomic_ushort</span>
-                                </code> változata is egyelőre
-                                <code>
-                                    <span class="yellow">_a</span>
-                                </code> végződéssel.</p>
-                            <ul>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">win1250_2_unicode_a</span>(
+                                        <span class="blue">unsigned char</span> * win1250,
+                                        <span class="blue">atomic_ushort</span> * uni)
+                                    </code>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">win1252_2_unicode_a</span>(
+                                        <span class="blue">unsigned char</span> * win1252,
+                                        <span class="blue">atomic_ushort</span> * uni)
+                                    </code>
+                                </li>
+                                <p>Szimpla karakterátkódolók, mindig az első paraméterben lévő tömbből a második paraméterben
+                                    lévő tömbbe.</p>
+                                <hr>
+
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">unicode_2_unicode_a</span>(
+                                        <span class="blue">unsigned short</span> * uni_nona,
+                                        <span class="blue">atomic_ushort</span> * uni)
+                                    </code>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">char_2_char_a</span>(
+                                        <span class="blue">char short</span> * c,
+                                        <span class="blue">atomic_char</span> * ca)
+                                    </code>
+                                </li>
+                                <p>
+                                    Normál tömbböket alakít át atomic tömbökké.
+                                </p>
+                                <hr>
+
                                 <li>
                                     <code>
                                         <span class="blue">bool</span>
@@ -103,6 +127,8 @@
                                             <span class="blue">false</span>
                                         </code>
                                     </p>
+                                    <hr>
+
                                 </li>
                                 <li>
                                     <code>
@@ -114,6 +140,7 @@
                                     <p>
                                         Egész számot alakít át unicode-á max 9999-ig, min -9999-től.
                                     </p>
+                                    <hr>
                                 </li>
                             </ul>
                         </li>
@@ -123,6 +150,9 @@
                     <h3>
                         file.c/file.h
                     </h3>
+                    <p>
+                        A rajtlista és eredményfájlból beolvasáshoz szükséges dolgokat tartalmazza.
+                    </p>
                     <ul>
                         <li>
                             <h3>Globális változók</h3>
@@ -130,12 +160,8 @@
                                 <li>
                                     <code>
                                         <span class="blue">extern bool</span> error</code>
-                                    <p>Még kihasználatlan, error kezeléshez kell. Lehet későbbiekben törölve.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">extern unsigned char</span> loglevel</code>
-                                    <p>Még kihasználatlan, a logolásnak a szintjét jelöli. Lehet későbbiekben törölve.</p>
+                                    <p>Hibakezeléshez változó, a
+                                        <code>main.c</code>-ben van.</p>
                                 </li>
                             </ul>
                         </li>
@@ -166,6 +192,10 @@
                                             <code>
                                                 <span class="blue">R_format</span> format</code> - a fájl típusa, pl.: txt
                                         </li>
+                                        <li>
+                                            <code>
+                                                <span class="blue">R_charset</span> charset</code> - a fájl karakterkódolása pl.: win1250
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -175,50 +205,6 @@
                             <ul>
                                 <li>
                                     <code>
-                                        <span class="blue">R_charset</span>
-                                        <span class="yellow">TXT_getcharset</span>(
-                                        <span class="blue">FILE</span> * f)
-                                    </code>
-                                    <p>TXT fájl első sorából megállapítja a karakterkódolást.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">Result</span> *
-                                        <span class="yellow">TXT_result_char</span>(
-                                        <span class="blue">char</span> * line,
-                                        <span class="blue">R_charset</span> charset)
-                                    </code>
-                                    <p>TXT eredmény fájl egy adott sorát értelmezi és visszaadja egy malloc-olt struktúrában.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">Result</span> *
-                                        <span class="yellow">TXT_start_char</span>(
-                                        <span class="blue">char</span> * line,
-                                        <span class="blue">R_charset</span> charset)
-                                    </code>
-                                    <p>TXT rajlista fájl egy adott sorát értelmezi és visszaadja egy malloc-olt struktúrában.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void</span>
-                                        <span class="yellow">TXT_start_char</span>(
-                                        <span class="blue">char</span> * line,
-                                        <span class="blue">Category</span> ** list)
-                                    </code>
-                                    <p>TXT eredmény fájlt olvas be.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void</span>
-                                        <span class="yellow">TXT_read_start</span>(
-                                        <span class="blue">char</span> * line,
-                                        <span class="blue">Category</span> ** list)
-                                    </code>
-                                    <p>TXT rajlista fájlt olvas be.</p>
-                                </li>
-                                <li>
-                                    <code>
                                         <span class="blue">void</span> *
                                         <span class="yellow">readerthread</span>(
                                         <span class="blue">void</span> * arg)
@@ -226,6 +212,80 @@
                                     <p>A beolvasó thread, paramétere a
                                         <code>
                                             <span class="blue">struct</span> thread_arg</code>.</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">R_charset</span>
+                                        <span class="yellow">TXT_getcharset</span>(
+                                        <span class="blue">FILE</span> * f)
+                                    </code>
+                                    <p>TXT fájl első sorából megállapítja a karakterkódolást.</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">Result</span> *
+                                        <span class="yellow">TXT_line</span>(
+                                        <span class="blue">char</span> * line,
+                                        <span class="blue">R_charset</span> charset,
+                                        <span class="blue">R_list</span> listtype)
+                                    </code>
+                                    <p>TXT eredmény vagy rajtlista fájl egy adott sorát értelmezi és visszaadja egy malloc-olt
+                                        struktúrában.
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">TXT_read</span>(
+                                        <span class="blue">FILE</span> * f,
+                                        <span class="blue">Category</span> ** list,
+                                        <span class="blue">R_list</span> listtype)
+
+                                    </code>
+                                    <p>TXT eredmény vagy rajtlista fájlt olvas be.</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">TXT_read</span>(
+                                        <span class="blue">FILE</span> * f,
+                                        <span class="blue">R_charset</span> charset,
+                                        <span class="blue">Category</span> ** list,
+                                        <span class="blue">R_list</span> listtype)
+
+                                    </code>
+                                    <p>IOF xml eredmény vagy rajtlista fájlt olvas be.</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">Result</span> *
+                                        <span class="yellow">CSV_line</span>(
+                                        <span class="blue">char</span> * line,
+                                        <span class="blue">R_charset</span> charset,
+                                        <span class="blue">R_list</span> listtype)
+                                    </code>
+                                    <p>CSV eredmény vagy rajtlista fájl egy adott sorát értelmezi és visszaadja egy malloc-olt
+                                        struktúrában.
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">CSV_read</span>(
+                                        <span class="blue">FILE</span> * f,
+                                        <span class="blue">Category</span> ** list,
+                                        <span class="blue">R_list</span> listtype,
+                                        <span class="blue">R_charset</span> charset)
+
+                                    </code>
+                                    <p>CSV eredmény vagy rajtlista fájlt olvas be.</p>
+                                    <hr>
                                 </li>
                             </ul>
                         </li>
@@ -233,79 +293,8 @@
                     </ul>
                 </li>
                 <li>
-                    <h3>log.c/log.h</h3>
-                    <p>
-                        Alap logolásos funkciók a log.txt-be mentve.
-                    </p>
-                    <ul>
-                        <li>
-                            <h3>Globális változók</h3>
-                            <ul>
-                                <li>
-                                    <code>
-                                        <span class="blue">FILE</span>
-                                        * loggerfile
-                                    </code>
-                                    <p>
-                                        A log.txt külső hozzáférésre.
-                                    </p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3>
-                                Függvények
-                            </h3>
-                            <ul>
-                                <li>
-                                    <code>
-                                        <span class="blue">bool</span>
-                                        <span class="yellow">LOG_init</span>()
-                                    </code>
-                                    <p>Megnyitja a loggerfile-ba a log.txt-t és
-                                        <code>
-                                            <span class="blue">true</span>
-                                        </code>-t ad vissza ha sikeres, egyébként
-                                        <code>
-                                            <span class="blue">false</span>
-                                        </code>-t.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void</span> *
-                                        <span class="yellow">LOG_str</span>(
-                                        <span class="blue">char</span> * str)
-                                    </code>
-                                    <p>
-                                        Kiírja a loggerfile-ba a paraméterként kapott karaktertömböt és ha szükséges kiegészíti egy új sor karakterrel.
-                                    </p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void</span> *
-                                        <span class="yellow">LOG_cstr</span>(
-                                        <span class="blue">const char</span> * str)
-                                    </code>
-                                    <p>
-                                        Ugyanaz mint az előző, csak konstansnak, valószínüleg a másik törölve lesz és ez veszi át a helyét.
-                                    </p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">void</span> *
-                                        <span class="yellow">LOG_close</span>()
-                                    </code>
-                                    <p>
-                                        Bezárja a loggerfile-t.
-                                    </p>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
                     <h3>main.c</h3>
-                    <p>A főprogram még kissé telerakva teszteléshez szükséges dolgokkal.</p>
+                    <p>A főprogram.</p>
                     <ul>
                         <li>
                             <h3>
@@ -319,11 +308,6 @@
                                         <code>
                                             <span class="blue">false</span>
                                         </code>-ra állított változó a hibakezeléshez.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">unsigned char</span> loglevel</code>
-                                    <p>Még kihasználatlan log szint kezelés.</p>
                                 </li>
                             </ul>
                         </li>
@@ -340,6 +324,7 @@
                                     <p>
                                         Az argumentumok az SDL2 miatt kellenek, másképp nem indulna el.
                                     </p>
+                                    <hr>
                                 </li>
                             </ul>
                         </li>
@@ -347,20 +332,21 @@
                 </li>
                 <li>
                     <h3>results.c/results.h</h3>
+                    <p></p>
                     <ul>
                         <li>
-                            <h3>definíciók</h3>
+                            <h3>Definíciók</h3>
                             <ul>
                                 <li>
                                     <code>
                                         <span class="purple">#define</span>
                                         <span class="yellow"> namesize</span>
-                                        <span class="green">21</span>
+                                        <span class="green">50</span>
                                     </code>
                                     <p>
                                         Például a nevek eltárolásához használt tömb méret. Jelenleg
                                         <code>
-                                            <span class="green">21</span>
+                                            <span class="green">50</span>
                                         </code> az értéke.
                                     </p>
                                 </li>
@@ -370,11 +356,13 @@
                             <h3>
                                 Globális változók
                             </h3>
-                            <li>
-                                <code>
-                                    <span class="blue">extern bool</span> error</code>
-                                <p>Még kihasználatlan, error kezeléshez kell. Lehet későbbiekben törölve.</p>
-                            </li>
+                            <ul>
+                                <li>
+                                    <code>
+                                        <span class="blue">extern bool</span> error</code>
+                                    <p>Hibakezeléshez kell.</p>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <h3>
@@ -440,8 +428,7 @@
                                     <ul>
                                         <li>
                                             <code>
-                                                <span class="blue">atomic_short</span> pos, prev</code> - A futó helyezése, illetve egy ki nem
-                                            használt változó
+                                                <span class="blue">atomic_short</span> pos</code> - A futó helyezése. változó
                                         </li>
                                         <li>
                                             <code>
@@ -460,13 +447,14 @@
                                             <code>
                                                 <span class="blue">atomic_int</span> t</code> - Futó ideje mp-ben
                                         </li>
-                                        <li>
-                                            <code>
-                                                <span class="blue">atomic_bool</span> shown,poschanged</code> - kihasználatlan változók a megjelenítéshez
-                                        </li>
+
                                         <li>
                                             <code>
                                                 <span class="blue">atomic_int</span> starttime</code> - A futó rajtideje mp-ben
+                                        </li>
+                                        <li>
+                                            <code>
+                                                <span class="blue">time_t</span> updated</code> - Az utolsó frissitésének időpontja
                                         </li>
                                         <li>
                                             <code>
@@ -480,7 +468,7 @@
                                     <ul>
                                         <li>
                                             <code>
-                                                <span class="blue">char</span> name[namesize]</code> - A kategória neve használt változó
+                                                <span class="blue">char</span> name[namesize]</code> - A kategória neve
                                         </li>
                                         <li>
                                             <code>
@@ -518,6 +506,7 @@
                                         <code>res</code>-jének a végéhez fűzi az
                                         <code>r</code> eredményt, függően attól hogy eredmény vagy rajtlista típusú.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -531,6 +520,7 @@
                                         <code>list</code> kategória
                                         <code>res</code>-jének a végéhez fűz egy malloc-olt Result-ot és ennek a címét adja vissza.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -544,21 +534,85 @@
                                         <code>list</code> kategóriából kitörli az adott
                                         <code>del</code> eredményt.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
                                         <span class="blue">Result</span> *
                                         <span class="yellow">R_result_search</span>(
                                         <span class="blue">Category</span> * list,
-                                        <span class="blue">Result</span> * rel,
-                                        <span class="blue">char</span> level)
+                                        <span class="blue">Result</span> * rel)
                                     </code>
                                     <p>
                                         A
                                         <code>list</code> kategóriában megkeresi az adott
-                                        <code>rel</code> eredményt, a
-                                        <code>level</code> az egyezés szintjét jelöli.
+                                        <code>rel</code> eredményt.
                                     </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">R_result_sort</span>(
+                                        <span class="blue">Category</span> * list)
+                                    </code>
+                                    <p>
+                                        A
+                                        <code>list</code> kategóriát rendezi
+                                        <code>pos</code> alapján növekvő sorrendbe-
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">insertionSort</span>(
+                                        <span class="blue">Result</span> ** head_ref)
+                                    </code>
+                                    <p>Segéfüggvény
+                                        <code>
+                                            <span class="yellow">R_result_sort</span>
+                                        </code>-hoz. Beszúrásos rendezés pos alapján.</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">sortedInsert</span>(
+                                        <span class="blue">Result</span> ** head_ref,
+                                        <span class="blue">Result</span> * new_node)
+                                    </code>
+                                    <p>Segéfüggvény
+                                        <code>
+                                            <span class="yellow">R_result_sort</span>
+                                        </code>-hoz. Rendezetten hozzáfűzi
+                                        <code>head_ref</code>-hez
+                                        <code>new_node</code>-t.</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">Result</span> *
+                                        <span class="yellow">R_new</span>()
+                                    </code>
+                                    <p>malloc-ol egy
+                                        <code>
+                                            <span class="blue">Result</span>
+                                        </code>-t és beállítja az értékeit alapértelmezettre, majd visszaadja a címét.</p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void</span>
+                                        <span class="yellow">deleteAFK</span>(
+                                        <span class="blue">Category</span> * list)
+                                    </code>
+                                    <p>
+                                        A
+                                        <code>list</code> kategóriából kitörli azokat az eredményeket, amik nem szerepeltek 6 percig,
+                                        illetve azokat rajtlistából importáltakat, amiknek még csak rajtideje van és egy
+                                        órája nem frissültek.</p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -571,6 +625,7 @@
                                         <code>list</code> kategória lista végére létrehoz egy új kategóriát és ennek a címét adja
                                         vissza. (malloc)
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -584,6 +639,7 @@
                                         <code>list</code> kategória listában megkeresi a
                                         <code>name</code>-el megegyező nevűt.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -598,6 +654,7 @@
                                             <span class="blue">atomic_char</span>
                                         </code>-al;
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -608,6 +665,7 @@
                                     <p>
                                         Törli a listában lévő összes eredményt.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -619,6 +677,7 @@
                                     <p>
                                         Törli a listából az adott kategóriát és az eredményeit. Egyelőre hibás, az elsőt nem tudja törölni.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -629,6 +688,7 @@
                                     <p>
                                         Törli a listából az összes kategóriát és eredményt.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -639,6 +699,7 @@
                                     <p>
                                         Visszaadja ascii karaktertömbben a charset nevét.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -649,6 +710,7 @@
                                     <p>
                                         Visszaadja ascii karaktertömbben a format nevét.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -659,6 +721,7 @@
                                     <p>
                                         A charset nevéből visszaadja az értékét.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -669,6 +732,33 @@
                                     <p>
                                         A format nevéből visszaadja az értékét.
                                     </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">char</span> *
+                                        <span class="yellow">R_load_cats</span>(
+                                        <span class="blue">char</span> * filename,
+                                        <span class="blue">int</span> * size)
+                                    </code>
+                                    <p>
+                                        Betölti a
+                                        <code>filename</code> nevű fájlből a kategóriákat egy malloc-olt stringbe.
+                                        <code>*size</code>-ba írja bele a string méretét.
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">int</span>
+                                        <span class="yellow">pow_dec</span>(
+                                        <span class="blue">int</span> n)
+                                    </code>
+                                    <p>
+                                        Visszatér 10
+                                        <code>n</code>-edik hatványával.
+                                    </p>
+                                    <hr>
                                 </li>
                             </ul>
                         </li>
@@ -684,12 +774,7 @@
                                 <li>
                                     <code>
                                         <span class="blue">extern bool</span> error</code>
-                                    <p>Még kihasználatlan, error kezeléshez kell. Lehet későbbiekben törölve.</p>
-                                </li>
-                                <li>
-                                    <code>
-                                        <span class="blue">extern unsigned char</span> loglevel</code>
-                                    <p>Még kihasználatlan, a logolásnak a szintjét jelöli. Lehet későbbiekben törölve.</p>
+                                    <p>Hibakezeléshez kell.</p>
                                 </li>
                             </ul>
                         </li>
@@ -702,7 +787,7 @@
                                     <ul>
                                         <li>
                                             <code>
-                                                <span class="blue">R_charset</span> charset</code> - a fájlok karakterkódolása - nem használt
+                                                <span class="blue">R_charset</span> charset</code> - a fájlok karakterkódolása
                                         </li>
                                         <li>
                                             <code>
@@ -720,15 +805,22 @@
                                         </li>
                                         <li>
                                             <code>
+                                                <span class="blue">char</span> left_file[
+                                                <span class="green">30</span>]</code> - A baloldali kategóriák felsorolását tartalmazó fájl neve
+                                        </li>
+                                        <li>
+                                            <code>
+                                                <span class="blue">char</span> right_file[
+                                                <span class="green">30</span>]</code> - A jobboldali kategóriák felsorolását tartalmazó fájl
+                                            neve
+                                        </li>
+                                        <li>
+                                            <code>
                                                 <span class="blue">int</span> leftspeed</code> - A baloldali sebessége a gördülésnek
                                         </li>
                                         <li>
                                             <code>
                                                 <span class="blue">int</span> rightspeed</code> - A jobboldali sebessége a gördülésnek
-                                        </li>
-                                        <li>
-                                            <code>
-                                                <span class="blue">unsigned short</span> loglevel</code> - A logolás szintje - nem használt
                                         </li>
                                         <li>
                                             <code>
@@ -739,6 +831,10 @@
                                             <code>
                                                 <span class="blue">int</span> start_refreshrate</code> - A rajtlistafájl újraolvasásának időköze
                                             mp-ben
+                                        </li>
+                                        <li>
+                                            <code>
+                                                <span class="blue">int</span> nulltime</code> - A nullidő éjféltől mp-ekben
                                         </li>
                                     </ul>
                                 </li>
@@ -757,6 +853,7 @@
                                         Beállítja az alapértelmezettek
                                         <code>s</code>-be.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -768,6 +865,7 @@
                                         Menti a beállításokat a settings.txt-be
                                         <code>s</code>-ből.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -779,6 +877,7 @@
                                         Beölti a beállításokat a settings.txt-ből
                                         <code>s</code>-be.
                                     </p>
+                                    <hr>
                                 </li>
                             </ul>
                         </li>
@@ -786,7 +885,8 @@
                 </li>
                 <li>
                     <h3>text.c/text.h</h3>
-                    <p>Grafikus megjelenítéshez tartalmaz elemeket.</p>
+                    <p>A ttf betűtípus betöltésével és kezelésével kapcsolatos függvényeket lát el.</p>
+                    <p>A kategóriák és eredmények képernyőn megjelenítéséhez tartalmaz függvényeket.</p>
                     <ul>
                         <li>
                             <h3>definíciók</h3>
@@ -798,14 +898,10 @@
                                         <span class="green">319</span>
                                     </code>
                                     <p>
-                                        Ez elég nagy eséllyel meg fog változni. Ennek a szerepe a betűformák indexelésénél van, méghozzá ez adja meg, hogy maximum
-                                        mennyit olvasson be a ttf-ből, ami jelen pillanatban
+                                        A Unicode karakterek
                                         <code>
-                                            <span class="green">319</span>
-                                        </code>, de maga az Open Sans ttf-je kb 900 betűt tartalmaz. Nos nem volt még kedvem teljesen
-                                        kiválogatni melyikek kellenek, ezért csak az ascii, a latin2 és egyéb szükségletek
-                                        vannak eddig. Sajnos nem lehetett az alapján, hogy mennyit tud betölteni az SDL2ttf,
-                                        mivel kb 64000-et betölt hiba nélkül nem tudva melyik üres és ez elég nagy pazarlás.
+                                            <span class="blue">Glyph</span>
+                                        </code>-jeinek indexelésénél van szerepe.
                                     </p>
                                 </li>
                             </ul>
@@ -822,12 +918,11 @@
                                     <code>
                                         <ul>
                                             <li>LEFT</li>
-                                            <li>CENTER</li>
                                             <li>RIGHT</li>
                                         </ul>
                                     </code>
                                     <P>
-                                        A betűk kiírásánal honnan írja ki. A CENTER lehet el lesz dobva.
+                                        A betűk kiírásánal honnan írja ki.
                                     </P>
                                 </li>
                             </ul>
@@ -863,6 +958,7 @@
                                     <p>
                                         Az Unicode karakterkódból előállítja az indexét.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -873,6 +969,7 @@
                                     <p>
                                         Az indexéből előállítja az Unicode karakterét.
                                     </p>
+                                    <hr>
                                 </li>
                                 <li>
                                     <code>
@@ -888,6 +985,125 @@
                                         <code>g</code>-be a
                                         <code>font</code>-ban lévő karaktereket.
                                     </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void </span>
+                                        <span class="yellow">destroyGlyphs</span>(
+                                        <span class="blue">Glyph</span> * g)
+                                    </code>
+                                    <p>
+                                        Törli a
+                                        <code>g</code>-ben lévő karaktereket.
+                                    </p>
+                                </li>
+                                <hr>
+                                <li>
+                                    <code>
+                                        <span class="blue">void </span>
+                                        <span class="yellow">text</span>(
+                                        <span class="blue">unsigned short</span> * uni,
+                                        <span class="blue">SDL_Renderer</span> * renderer,
+                                        <span class="blue">Glyph</span> * g,
+                                        <span class="blue">int</span> x,
+                                        <span class="blue">int</span> y,
+                                        <span class="blue">Align</span> a)
+                                    </code>
+                                    <p>
+                                        Megjeleníti az
+                                        <code>uni</code>-ban lévő betűket
+                                        <code>x y</code> pozícióban,
+                                        <code>g</code> betűkkel.
+                                        <code>a</code> alapján balra vagy jobbra rendezve.
+                                    </p>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void </span>
+                                        <span class="yellow">texta</span>(
+                                        <span class="blue">atomic_ushort</span> * uni,
+                                        <span class="blue">SDL_Renderer</span> * renderer,
+                                        <span class="blue">Glyph</span> * g,
+                                        <span class="blue">int</span> x,
+                                        <span class="blue">int</span> y,
+                                        <span class="blue">Align</span> a)
+                                    </code>
+                                    <p>
+                                        Mint az előző, csak
+                                        <code>
+                                            <span class="blue">atomic_ushort</span>
+                                        </code>-al.
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void </span>
+                                        <span class="yellow">background</span>(
+                                        <span class="blue">SDL_Renderer</span> * renderer,
+                                        <span class="blue">int</span> x,
+                                        <span class="blue">int</span> y,
+                                        <span class="blue">int</span> w,
+                                        <span class="blue">int</span> h,
+                                        <span class="blue">SDL_Color</span> * c)
+                                    </code>
+                                    <p>
+                                        Egy sima téglalapot rajzol
+                                        <code>c</code> színnel.
+                                        <code>x y</code> helyre,
+                                        <code>w h</code> kiterjedéssel,
+                                        <code>c</code> színnel.
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void </span>
+                                        <span class="yellow">render_result</span>(
+                                        <span class="blue">SDL_Renderer</span> * renderer,
+                                        <span class="blue">int</span> x,
+                                        <span class="blue">int</span> y,
+                                        <span class="blue">int</span> w,
+                                        <span class="blue">int</span> h,
+                                        <span class="blue">SDL_Color</span> * back,
+                                        <span class="blue">Result</span> * res,
+                                        <span class="blue">int</span> * first,
+                                        <span class="blue">int</span> * nulltime)
+                                    </code>
+                                    <p>
+                                        Megjeleníti egysorban a
+                                        <code>res</code> eredményt
+                                        <code>back</code> háttérrel.
+                                        <code>x y</code> hely,re,
+                                        <code>w h</code> kiterjedéssel,
+                                        <code>back</code> a háttér színe.
+                                        <code>first</code> a kategóriában az elsőnek az eredmény ideje,
+                                        <code>nulltime</code> a verseny nullideje, amikor rajt van.
+                                    </p>
+                                    <hr>
+                                </li>
+                                <li>
+                                    <code>
+                                        <span class="blue">void </span>
+                                        <span class="yellow">render_category</span>(
+                                        <span class="blue">SDL_Renderer</span> * renderer,
+                                        <span class="blue">int</span> x,
+                                        <span class="blue">int</span> y,
+                                        <span class="blue">int</span> w,
+                                        <span class="blue">int</span> *size,
+                                        <span class="blue">Category</span> * c
+                                        <span class="blue">int</span> * nulltime)
+                                    </code>
+                                    <p>
+                                        Megjeleníti a
+                                        <code>c</code> kategória eredményeit.
+                                        <code>*size</code>-ba írja be az összemagasságát.
+                                        <code>x y</code> helyre,
+                                        <code>w</code> szélességgel.
+                                        <code>nulltime</code> a verseny nullideje.
+                                    </p>
+                                    <hr>
                                 </li>
                             </ul>
                         </li>
@@ -900,17 +1116,35 @@
             <ul>
                 <li>
                     <h3>Makefile</h3>
-                    <p>Egyelőre csak windows-on működő makefile.</p>
+                </li>
+            </ul>
+            <p>A tesztfájlok sorvége jele \r\n!</p>
+            <ul>
+                <li>
+                    <h3>bin/oe.csv</h3>
+                    <p>Az OE2010 egyik DEMO versenyéből importált eredményfájl.</p>
                 </li>
                 <li>
-                    <h3>bin/result.txt</h3>
-                    <p>Példa eredményfájl random nevekkel feltöltve TXT formátummal.</p>
+                    <h3>bin/oerajt.csv</h3>
+                    <p>Az OE2010 egyik DEMO versenyéből importált rajtlistafájl.</p>
+                </li>
+                <li>
+                    <h3>bin/oeiof.xml</h3>
+                    <p>Az OE2010 egyik DEMO versenyéből importált eredményfájl.</p>
+                </li>
+                <li>
+                    <h3>bin/left.txt és bin/right.txt</h3>
+                    <p>Az OE2010 egyik DEMO versenyéből importált eredményfájlhoz a bal és jobboldali kategóriafájl.</p>
+                </li>
+                <li>
+                    <h3>bin/settings.txt</h3>
+                    <p>Az OE2010 egyik DEMO versenyéből importált eredményfájlhoz csv teszteléséhez a beállítás.</p>
                 </li>
             </ul>
         </li>
     </ul>
     <p style="text-align: center;margin-bottom:100px;">
-        Félkész megoldás dokumentációját készítette: Stork Gábor
+        Programozói dokumentációt készítette: Stork Gábor
     </p>
 </body>
 

@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" lang="hu_HU" />
+    <title>NHF felhasználói dokumentáció - NO047V Stork Gábor</title>
+    <link href="doc/style.css" type="text/css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <h1 class="cim">NHF felhasználói dokumentáció - NO047V Stork Gábor</h1>
+    <ul>
+        <li>
+            <h2 class="alcim">
+                Rövid leírás
+            </h2>
+            <p>A program tájfutóversenyek eredményközléséhez készült, időközönkénti frissítést és folyamatos görgetést használva
+                két oldalra bontva az eredményeket.</p>
+        </li>
+        <li>
+            <h2 class="alcim">
+                Használat
+            </h2>
+            <p>SDL2 és SDL2_ttf szükséges a program használatához!</p>
+            <hr>
+            <p>A program futás közben szabályozható a következő billentyűzetgombok lenyomásokkal:</p>
+            <ul>
+                <li>
+                    <code>Q</code> - A baloldali sebesség növelése, maximum 200
+                </li>
+                <li>
+                    <code>A</code> - A baloldali sebesség csökkentése, minimum 0
+                </li>
+                <li>
+                    <code>W</code> - A jobboldali sebesség növelése, maximum 200
+                </li>
+                <li>
+                    <code>S</code> - A jobboldali sebesség csökkentése, minimum 0
+                </li>
+                <li>
+                    <code>E</code> - A sebességek beállítása 90-re
+                </li>
+                <li>
+                    <code>R</code> - Visszaállítás kezdőpozícióra.
+                </li>
+                <li>
+                    <code>D</code> - A görgetés megállítása, illetve elindítása
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h2 class="alcim">
+                Beállítások
+            </h2>
+            <p>Vagyis a
+                <code>settings.txt</code>
+            </p>
+            <ul>
+                <li>
+                    <h3>Formátum</h3>
+                    <p>A beállítások formátuma:</p>
+                    <code>
+                        <span class="blue">
+                            tulajdonság=érték</span>
+
+                    </code>
+                    <p>minden ilyen sor után van egy új sor jel, fontos, hogy így a txt egy üres sorral végződik!</p>
+                    <p>Karakterkódolása ASCII.</p>
+                </li>
+                <li>
+                    <h3>Tulajdonságok</h3>
+                    <p>Példák az alapértelmezett értékkel.</p>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">charset=win1252</span>
+                            </code>
+                            <p>A karakterkódolás</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">format=csv</span>
+                            </code>
+                            <p>A formátum</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">resultfile=oe.csv</span>
+                            </code>
+                            <p>Az eredményfájl neve</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">startfile=oerajt.csv</span>
+                            </code>
+                            <p>A rajtlistafájl neve</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">leftfile=left.txt</span>
+                            </code>
+                            <p>A baloldali kategóriákat tartalmazó fájl neve</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">rightfile=right.txt</span>
+                            </code>
+                            <p>A jobboldali kategóriákat tartalmazó fájl neve</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">res_refreshrate=10</span>
+                            </code>
+                            <p>Az eredményfájl frissítésének időköze mp-ben</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">start_refreshrate=10</span>
+                            </code>
+                            <p>A rajtlisafájl frissítésének időköze mp-ben</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">leftspeed=60</span>
+                            </code>
+                            <p>A baloldali görgetési sebesség</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">rightspeed=60</span>
+                            </code>
+                            <p>A jobboldali görgetési sebesség</p>
+                            <hr>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <code>
+                                <span class="blue">nulltime=43200</span>
+                            </code>
+                            <p>A nullidő éjféltől kezdve mp-ben mérve, alapértelmezetten délre állítva</p>
+                            <hr>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h2 class="alcim">
+                Bal és Jobboldali kategóriafájlok
+            </h2>
+            <p>
+                A beállításokban megadott fájlban szereplő kategóriák nevét tartalmazza soronként. Fontos, hogy üres sorral végződik. Például:
+            </p>
+            <code>
+                <span class="blue">
+                    <p>M14E</p>
+                    <p>M16E</p>
+                    <p>..</p>
+                </span>
+            </code>
+            <hr>
+        </li>
+        <li>
+            <h2 class="alcim">
+                Eredmény- és rajtlistafájlokról
+            </h2>
+            <ul>
+                <li>
+                    <h3>txt formátum</h3>
+                    <p>Egyéni formátum, OE2010-el nem exportálható.</p>
+                    <p>Tabulátorokkal tagolva tartalmazza ezeket az információkat ebben a sorrendben:</p>
+                    <ul>
+                        <li>Helyezés (egész szám)</li>
+                        <li>Vezetéknév (karaktersorozat)</li>
+                        <li>Keresztnév (karaktersorozat)</li>
+                        <li>Egyesület (karaktersorozat)</li>
+                        <li>Kategória (karaktersorozat)</li>
+                        <li>Idő/Rajtidő (HHH:MM:SS)</li>
+                    </ul>
+                    <p>
+                        Fontos, hogy a txt első sorában specifikálni kell, hogy milyen kódolású:
+                    </p>
+                    <ul>
+                        <li>UTF-8</li>
+                        <li>ASCII</li>
+                        <li>windows-1252</li>
+                        <li>windows-1250</li>
+                        <li>latin2</li>
+                    </ul>
+                    <hr>
+                </li>
+                <li>
+                    <h3>csv formátum</h3>
+                    <p>
+                        OE2010 által exportált csv formátum, javasolt a használata!
+                    </p>
+                    <hr>
+                </li>
+                <li>
+                    <h3>xml formátum</h3>
+                    <p>
+                        OE2010 által exportált IOF Interface Standard 3.0 formátum. Nagy mérete miatt nem ajánlott.
+                    </p>
+                    <hr>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p style="text-align: center;margin-bottom:100px;">
+        Felhasználói dokumentációt készítette: Stork Gábor
+    </p>
+</body>
